@@ -7,12 +7,12 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
+//test
 @Autonomous
 public class AutonPracticePlatform extends LinearOpMode {
 
     /* Declare OpMode members. */
-    HardwareMapping         robot   = new HardwareMapping();   // Use a Pushbot's hardware
+    org.firstinspires.ftc.teamcode.HardwareMapping robot   = new org.firstinspires.ftc.teamcode.HardwareMapping();   // Use a Pushbot's hardware
     private ElapsedTime     runtime = new ElapsedTime();
 
     static final double     COUNTS_PER_MOTOR_REV    = 288 ;    // Rev Core Hex
