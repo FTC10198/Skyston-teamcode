@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
-//test
+
 @Autonomous
 public class AutonPracticePlatform extends LinearOpMode {
 
@@ -52,7 +52,7 @@ public class AutonPracticePlatform extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        while (ElapsedTime < 30) {
+        //while (runtime < 30) {
 
             // Step through each leg of the path,
             // Note: Reverse movement is obtained by setting a negative distance (not speed)
@@ -68,7 +68,7 @@ public class AutonPracticePlatform extends LinearOpMode {
             telemetry.addData("Path", "Complete");
             telemetry.update();
 
-        }
+        //}
     }
 
     /*

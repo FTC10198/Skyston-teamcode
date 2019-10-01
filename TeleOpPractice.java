@@ -41,7 +41,7 @@ public class TeleOpPractice extends LinearOpMode {
                 robot.platformServo.setPosition(1);
                 telemetry.addData("Left Power", tgtPowerleft);
                 telemetry.addData("Right Power", tgtPowerright);
-                telemetry.addData( caption: "Platform Servo Position", robot.platformServo.getPosition())
+                telemetry.addData("Platform Servo Position", robot.platformServo.getPosition());
                 telemetry.addData("Status", "Running");
                 telemetry.update();
             }
