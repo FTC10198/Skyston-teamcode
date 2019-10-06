@@ -13,10 +13,11 @@ import com.qualcomm.robotcore.hardware.GyroSensor;
 public class HardwareMapping
 {
     /* Public OpMode members. */
-    public DcMotor  leftmotor   = null;
-    public DcMotor  rightmotor  = null;
+    public DcMotor  frontLeftMotor   = null;
+    public DcMotor  frontRightMotor  = null;
+    public DcMotor  backLeftMotor   = null;
+    public DcMotor  backRightMotor  = null;
     public Servo    platformServo    = null;
-
     public Gyroscope imu = null;
     //public DigitalChannel digitalTouch = null;
     //public DistanceSensor sensorColorRange = null;
@@ -35,14 +36,18 @@ public class HardwareMapping
         hwMap = ahwMap;
 
         // Define and Initialize Motors
-        leftmotor  = hwMap.get(DcMotor.class, "leftmotor");
-        rightmotor = hwMap.get(DcMotor.class, "rightmotor");
-        leftmotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
-        rightmotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
+        frontLeftMotor  = hwMap.get(DcMotor.class, "frontLeftMotor");
+        frontRightMotor = hwMap.get(DcMotor.class, "frontRightMotor");
+        backLeftMotor  = hwMap.get(DcMotor.class, "backLeftMotor");
+        backRightMotor = hwMap.get(DcMotor.class, "backRighMotor");
+       // leftmotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
+       // rightmotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
 
         // Set all motors to zero power
-        leftmotor.setPower(0);
-        rightmotor.setPower(0);
+        frontLeftMotor.setPower(0);
+        frontRightMotor.setPower(0);
+        backLeftMotor.setPower(0);
+        backRightMotor.setPower(0);
 
         // Define and initialize ALL installed servos.
         platformServo  = hwMap.get(Servo.class, "platformServo");

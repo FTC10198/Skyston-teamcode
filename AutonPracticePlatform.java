@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -37,16 +38,16 @@ public class AutonPracticePlatform extends LinearOpMode {
         telemetry.addData("Status", "Resetting Encoders");    //
         telemetry.update();
 
-        robot.leftmotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.rightmotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.backLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.backRightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        robot.leftmotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.rightmotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.backLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.backRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         // Send telemetry message to indicate successful Encoder reset
         telemetry.addData("Path0", "Starting at %7d :%7d",
-                robot.leftmotor.getCurrentPosition(),
-                robot.rightmotor.getCurrentPosition());
+                robot.backLeftMotor.getCurrentPosition(),
+                robot.backRightMotor.getCurrentPosition());
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
@@ -89,19 +90,19 @@ public class AutonPracticePlatform extends LinearOpMode {
         if (opModeIsActive()) {
 
             // Determine new target position, and pass to motor controller
-            newLeftTarget = robot.leftmotor.getCurrentPosition() + (int) (leftInches * COUNTS_PER_INCH);
-            newRightTarget = robot.rightmotor.getCurrentPosition() + (int) (rightInches * COUNTS_PER_INCH);
-            robot.leftmotor.setTargetPosition(newLeftTarget);
-            robot.rightmotor.setTargetPosition(newRightTarget);
+            newLeftTarget = robot.backLeftMotor.getCurrentPosition() + (int) (leftInches * COUNTS_PER_INCH);
+            newRightTarget = robot.backRightMotor.getCurrentPosition() + (int) (rightInches * COUNTS_PER_INCH);
+            robot.backLeftMotor.setTargetPosition(newLeftTarget);
+            robot.backRightMotor.setTargetPosition(newRightTarget);
 
             // Turn On RUN_TO_POSITION
-            robot.leftmotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.rightmotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.backLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.backRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             // reset the timeout time and start motion.
             runtime.reset();
-            robot.leftmotor.setPower(Math.abs(speed));
-            robot.rightmotor.setPower(Math.abs(speed));
+            robot.backLeftMotor.setPower(Math.abs(speed));
+            robot.backRightMotor.setPower(Math.abs(speed));
 
             // keep looping while we are still active, and there is time left, and both motors are running.
             // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
@@ -111,23 +112,23 @@ public class AutonPracticePlatform extends LinearOpMode {
             // onto the next step, use (isBusy() || isBusy()) in the loop test.
             while (opModeIsActive() &&
                     (runtime.seconds() < timeoutS) &&
-                    (robot.leftmotor.isBusy() && robot.rightmotor.isBusy())) {
+                    (robot.backLeftMotor.isBusy() && robot.backRightMotor.isBusy())) {
 
                 // Display it for the driver.
                 telemetry.addData("Path1", "Running to %7d :%7d", newLeftTarget, newRightTarget);
                 telemetry.addData("Path2", "Running at %7d :%7d",
-                        robot.leftmotor.getCurrentPosition(),
-                        robot.rightmotor.getCurrentPosition());
+                        robot.backLeftMotor.getCurrentPosition(),
+                        robot.backRightMotor.getCurrentPosition());
                 telemetry.update();
             }
 
             // Stop all motion;
-            robot.leftmotor.setPower(0);
-            robot.rightmotor.setPower(0);
+            robot.backLeftMotor.setPower(0);
+            robot.backRightMotor.setPower(0);
 
             // Turn off RUN_TO_POSITION
-            robot.leftmotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            robot.rightmotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.backLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.backRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
             //  sleep(250);   // optional pause after each move
         }
