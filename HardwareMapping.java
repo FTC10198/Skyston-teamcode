@@ -39,7 +39,7 @@ public class HardwareMapping
         frontLeftMotor  = hwMap.get(DcMotor.class, "frontLeftMotor");
         frontRightMotor = hwMap.get(DcMotor.class, "frontRightMotor");
         backLeftMotor  = hwMap.get(DcMotor.class, "backLeftMotor");
-        backRightMotor = hwMap.get(DcMotor.class, "backRighMotor");
+        backRightMotor = hwMap.get(DcMotor.class, "backRightMotor");
        // leftmotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
        // rightmotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
 

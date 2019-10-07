@@ -33,11 +33,16 @@ public class OmniTeleOp extends LinearOpMode {
     @Override
     public void runOpMode() {
         robot.init(hardwareMap);
-
+        telemetry.addData("Status", "Initialized");
+        telemetry.update();
+        // Wait for the game to start (driver presses PLAY)
+        waitForStart();
+        // run until the end of the match (driver presses STOP)
+        while (opModeIsActive()) {
             // left stick controls direction
             // right stick X controls rotation
 
-            float gamepad1LeftY = -gamepad1.left_stick_y;
+            float gamepad1LeftY = gamepad1.left_stick_y;
             float gamepad1LeftX = gamepad1.left_stick_x;
             float gamepad1RightX = gamepad1.right_stick_x;
 
@@ -78,21 +83,21 @@ public class OmniTeleOp extends LinearOpMode {
             telemetry.addData("b right pwr", "back right pwr: " + String.format("%.2f", BackRight));
             telemetry.addData("b left pwr", "back left pwr: " + String.format("%.2f", BackLeft));
 
-        if (gamepad2.y) {
-            // move to 0 degrees.
-            robot.platformServo.setPosition(0);
-        } else if (gamepad2.x) {
-            // move to 90 degrees.
-            robot.platformServo.setPosition(0.5);
-        } else if (gamepad2.a) {
-            // move to 180 degrees.
-            robot.platformServo.setPosition(1);
-            telemetry.addData("Platform Servo Position", robot.platformServo.getPosition());
-            telemetry.addData("Platform Servo Position", robot.platformServo.getPosition());
-            telemetry.addData("Status", "Running");
-            telemetry.update();
+            if (gamepad2.y) {
+                // move to 0 degrees.
+                robot.platformServo.setPosition(0);
+            } else if (gamepad2.x) {
+                // move to 90 degrees.
+                robot.platformServo.setPosition(0.5);
+            } else if (gamepad2.a) {
+                // move to 180 degrees.
+                robot.platformServo.setPosition(1);
+                telemetry.addData("Platform Servo Position", robot.platformServo.getPosition());
+                telemetry.addData("Platform Servo Position", robot.platformServo.getPosition());
+                telemetry.addData("Status", "Running");
+                telemetry.update();
 
+            }
         }
-
     }
 }
