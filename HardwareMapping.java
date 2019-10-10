@@ -17,6 +17,8 @@ public class HardwareMapping
     public DcMotor  frontRightMotor  = null;
     public DcMotor  backLeftMotor   = null;
     public DcMotor  backRightMotor  = null;
+    public DcMotor  intakeRight   = null;
+    public DcMotor  intakeLeft  = null;
     public Servo    platformServo    = null;
     public Gyroscope imu = null;
     //public DigitalChannel digitalTouch = null;
@@ -40,6 +42,8 @@ public class HardwareMapping
         frontRightMotor = hwMap.get(DcMotor.class, "frontRightMotor");
         backLeftMotor  = hwMap.get(DcMotor.class, "backLeftMotor");
         backRightMotor = hwMap.get(DcMotor.class, "backRightMotor");
+        intakeRight  = hwMap.get(DcMotor.class, "intakeRight");
+        intakeLeft = hwMap.get(DcMotor.class, "intakeLeft");
        // leftmotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
        // rightmotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
 
@@ -48,6 +52,9 @@ public class HardwareMapping
         frontRightMotor.setPower(0);
         backLeftMotor.setPower(0);
         backRightMotor.setPower(0);
+        intakeRight.setPower(0);
+        intakeLeft.setPower(0);
+
 
         // Define and initialize ALL installed servos.
         platformServo  = hwMap.get(Servo.class, "platformServo");

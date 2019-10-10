@@ -43,8 +43,8 @@ public class OmniTeleOp extends LinearOpMode {
             // right stick X controls rotation
 
             float gamepad1LeftY = gamepad1.left_stick_y;
-            float gamepad1LeftX = gamepad1.left_stick_x;
-            float gamepad1RightX = gamepad1.right_stick_x;
+            float gamepad1LeftX = -gamepad1.left_stick_x;
+            float gamepad1RightX = -gamepad1.right_stick_x;
 
             // holonomic formulas
 
@@ -82,7 +82,14 @@ public class OmniTeleOp extends LinearOpMode {
             telemetry.addData("f right pwr", "front right pwr: " + String.format("%.2f", FrontRight));
             telemetry.addData("b right pwr", "back right pwr: " + String.format("%.2f", BackRight));
             telemetry.addData("b left pwr", "back left pwr: " + String.format("%.2f", BackLeft));
-
+            //for the intake
+            if (gamepad1.a) {
+                robot.intakeLeft.setPower(.5);
+                robot.intakeRight.setPower(-.5);
+            }if (gamepad1.b) {
+                robot.intakeLeft.setPower(-.5);
+                robot.intakeRight.setPower(.5);
+            }
             if (gamepad2.y) {
                 // move to 0 degrees.
                 robot.platformServo.setPosition(0);
@@ -96,6 +103,7 @@ public class OmniTeleOp extends LinearOpMode {
                 telemetry.addData("Platform Servo Position", robot.platformServo.getPosition());
                 telemetry.addData("Status", "Running");
                 telemetry.update();
+
 
             }
         }
