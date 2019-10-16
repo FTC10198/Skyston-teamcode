@@ -86,15 +86,27 @@ public class OmniTeleOp extends LinearOpMode {
             double intakeLeftPower = robot.intakeLeft.getPower();
             double intakeRightPower = robot.intakeRight.getPower();
 
-            boolean IntakeLeftBoolean = false;
-            boolean IntakeRightBoolean = false;
+            boolean IntakeIn;
+            boolean IntakeOut;
+
+            if (intakeLeftPower < 0){
+                IntakeIn = true;
+            }else {
+                IntakeIn = false;
+            }
+            if (intakeLeftPower > 0){
+                IntakeOut = true;
+            }else {
+                IntakeOut = false;
+            }
             //false means motor not running
+
 
             //for the intake
             if (gamepad1.a) {
-                if (IntakeLeftBoolean = false){
-                robot.intakeLeft.setPower(.5);
-                robot.intakeRight.setPower(-.5);}
+                if (IntakeIn == false){
+                robot.intakeLeft.setPower(-.5);
+                robot.intakeRight.setPower(.5);}
                 else {
                     robot.intakeLeft.setPower(0);
                     robot.intakeRight.setPower(0);
@@ -102,9 +114,9 @@ public class OmniTeleOp extends LinearOpMode {
                         String.format("%.2f", robot.intakeRight.getPower()));
                 telemetry.update();
             }else if (gamepad1.b) {
-                if (IntakeLeftBoolean = false) {
-                robot.intakeLeft.setPower(-.5);
-                robot.intakeRight.setPower(.5);}
+                if (IntakeOut == false) {
+                robot.intakeLeft.setPower(.5);
+                robot.intakeRight.setPower(-.5);}
                 else {
                     robot.intakeLeft.setPower(0);
                     robot.intakeRight.setPower(0);
