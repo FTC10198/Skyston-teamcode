@@ -25,17 +25,30 @@ public class BlueFoundationAuton extends LinearOpMode{
         runtime.reset();
         if (runtime.seconds() < 30) {
 
-            drive(0,.5,0,1000);
-            robot.platformServo.setPosition(0);
-            drive(0,-.75,0,1000);
+            //drive backwards
+            drive(-0.25,0,0,1000);
+            //drop arms
+            robot.leftArmServo.setPosition(0.5);
+            robot.rightArmServo.setPosition(0.5);
+            //sleep probably needed to allow servos to move
+            //drive forward, pulling platform
+            drive(0.75,0,0,333);
+            //raise arms
             robot.platformServo.setPosition(1);
-            drive(-.5,0,0,1000);
+            robot.rightArmServo.setPosition(1);
+            //go left and park under bridge
+            //sleep probably needed again
+            drive(0,-0.25,0,1000);
         }
     }
 
     public void drive(double LeftY, double LeftX, double RightX, double time){
+        double driftCorrect = .01 //*will have to tune, idea is to counteract rotating because of weight distribution, could add to teleop too
+        
+        LeftY = -LeftY;
         LeftX = -LeftX;
-        RightX = -RightX;
+        RightX = -RightX - (driftCorrect*(Math.abs(LeftY)+Math.abs(LeftX))); 
+        //probably doesn't math out right, but driftCorrect should get scaled by how fast other motors are going
 
 
         ElapsedTime runtime2 = new ElapsedTime();
