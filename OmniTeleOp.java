@@ -83,60 +83,77 @@ public class OmniTeleOp extends LinearOpMode {
             telemetry.addData("b right pwr", "back right pwr: " + String.format("%.2f", BackRight));
             telemetry.addData("b left pwr", "back left pwr: " + String.format("%.2f", BackLeft));
 
-            double intakeLeftPower = robot.intakeLeft.getPower();
-            double intakeRightPower = robot.intakeRight.getPower();
+            //double intakeLeftPower = robot.intakeLeft.getPower();
+            //double intakeRightPower = robot.intakeRight.getPower();
 
-            boolean IntakeIn;
-            boolean IntakeOut;
+            //boolean IntakeIn;
+            //boolean IntakeOut;
 
-            if (intakeLeftPower < 0){
-                IntakeIn = true;
-            }else {
-                IntakeIn = false;
-            }
-            if (intakeLeftPower > 0){
-                IntakeOut = true;
-            }else {
-                IntakeOut = false;
-            }
+            //if (intakeLeftPower < 0){
+            //    IntakeIn = true;
+            //}else {
+            //    IntakeIn = false;
+            //}
+            //if (intakeLeftPower > 0){
+            //    IntakeOut = true;
+            //}else {
+            //    IntakeOut = false;
+            //}
             //false means motor not running
 
 
             //for the intake
-            if (gamepad1.a) {
-                if (IntakeIn == false){
-                robot.intakeLeft.setPower(-.5);
-                robot.intakeRight.setPower(.5);}
-                else {
-                    robot.intakeLeft.setPower(0);
-                    robot.intakeRight.setPower(0);
-                }telemetry.addData("Intake System", String.format("%.2f", robot.intakeLeft.getPower()) + " " +
+            //if (gamepad1.a) {
+            //    if (IntakeIn == false){
+            //    robot.intakeLeft.setPower(-.5);
+            //    robot.intakeRight.setPower(.5);}
+            //    else {
+            //        robot.intakeLeft.setPower(0);
+            //        robot.intakeRight.setPower(0);
+            //    }telemetry.addData("Intake System", String.format("%.2f", robot.intakeLeft.getPower()) + " " +
+            //            String.format("%.2f", robot.intakeRight.getPower()));
+            //    telemetry.update();
+            //}else if (gamepad1.b) {
+            //    if (IntakeOut == false) {
+            //    robot.intakeLeft.setPower(.5);
+            //    robot.intakeRight.setPower(-.5);}
+            //    else {
+            //        robot.intakeLeft.setPower(0);
+            //        robot.intakeRight.setPower(0);
+            //    }telemetry.addData ("Intake System", String.format("%.2f", robot.intakeLeft.getPower()) + " " +
+            //            String.format("%.2f", robot.intakeRight.getPower()));
+            //    telemetry.update();
+            //}
+            
+            //New In
+            robot.intakeLeft.setPower(-gamepad2.left_trigger);
+            robot.intakeRight.setPower(gamepad2.left_trigger);
+            
+            //New Out
+            robot.intakeLeft.setPower(gamepad2.right_trigger);
+            robot.intakeRight.setPower(-gamepad2.right_trigger);
+            
+            telemetry.addData ("Intake System", String.format("%.2f", robot.intakeLeft.getPower()) + " " +
                         String.format("%.2f", robot.intakeRight.getPower()));
-                telemetry.update();
-            }else if (gamepad1.b) {
-                if (IntakeOut == false) {
-                robot.intakeLeft.setPower(.5);
-                robot.intakeRight.setPower(-.5);}
-                else {
-                    robot.intakeLeft.setPower(0);
-                    robot.intakeRight.setPower(0);
-                }telemetry.addData ("Intake System", String.format("%.2f", robot.intakeLeft.getPower()) + " " +
-                        String.format("%.2f", robot.intakeRight.getPower()));
-                telemetry.update();
-            }
-            else if (gamepad2.y) {
+            telemetry.update();
+            
+            //For testing positions to put into auton
+            if (gamepad2.y) {
                 // move to 0 degrees.
-                robot.platformServo.setPosition(0);
+                robot.leftArmServo.setPosition(0);
+                robot.rightArmServo.setPosition(0);
                 telemetry.addData("Platform Servo Position", robot.platformServo.getPosition());
                 telemetry.update();
             } else if (gamepad2.x) {
                 // move to 90 degrees.
-                robot.platformServo.setPosition(0.5);
+                robot.leftArmServo.setPosition(0.5);
+                robot.rightArmServo.setPosition(0.5);
                 telemetry.addData("Platform Servo Position", robot.platformServo.getPosition());
                 telemetry.update();
             } else if (gamepad2.a) {
                 // move to 180 degrees.
-                robot.platformServo.setPosition(1);
+                robot.leftArmServo.setPosition(1);
+                robot.rightArmServo.setPosition(1);
                 telemetry.addData("Platform Servo Position", robot.platformServo.getPosition());
                 telemetry.update();
             }
