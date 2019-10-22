@@ -19,7 +19,8 @@ public class HardwareMapping
     public DcMotor  backRightMotor  = null;
     public DcMotor  intakeRight   = null;
     public DcMotor  intakeLeft  = null;
-    public Servo    platformServo    = null;
+    public Servo    leftArmServo    = null;
+    public Servo    rightArmServo    = null;
     public Gyroscope imu = null;
     //public DigitalChannel digitalTouch = null;
     //public DistanceSensor sensorColorRange = null;
@@ -57,7 +58,8 @@ public class HardwareMapping
 
 
         // Define and initialize ALL installed servos.
-        platformServo  = hwMap.get(Servo.class, "platformServo");
+        leftArmServo  = hwMap.get(Servo.class, "leftArmServo");
+        rightArmServo  = hwMap.get(Servo.class, "rightArmServo");
 
         //Define rest.
         imu = hwMap.get(Gyroscope.class, "imu");
