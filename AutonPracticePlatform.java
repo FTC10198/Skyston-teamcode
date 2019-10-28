@@ -58,10 +58,10 @@ public class AutonPracticePlatform extends LinearOpMode {
             // Step through each leg of the path,
             // Note: Reverse movement is obtained by setting a negative distance (not speed)
             encoderDrive(DRIVE_SPEED, -22, -22, 5.0);  // S1: Forward 22 Inches with 5 Sec timeout, robot backwards
-            robot.platformServo.setPosition(1.0);      // S2: Lower the servo to grab platform
+           // robot.platformServo.setPosition(1.0);      // S2: Lower the servo to grab platform
             sleep(1000);
             encoderDrive(PULL_SPEED, 18, 18, 5.0);     // S3: Pull the platform into the scoring area.
-            robot.platformServo.setPosition(0.0);      // S4: Raise servo to release platform
+           // robot.platformServo.setPosition(0.0);      // S4: Raise servo to release platform
             sleep(1000);
             encoderDrive(TURN_SPEED, -12, 12, 3.0);    // S5: Turn left?
             encoderDrive(DRIVE_SPEED, 30, 30, 10.0);   // S6: Park on opposite side of bridge.

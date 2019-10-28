@@ -30,7 +30,7 @@ TeleOpPractice extends LinearOpMode {
             tgtPowerright = -this.gamepad1.right_stick_y;
             robot.backRightMotor.setPower(tgtPowerright);
             // check to see if we need to move the servo.
-            if (gamepad2.y) {
+           /* if (gamepad2.y) {
                 // move to 0 degrees.
                 robot.platformServo.setPosition(0);
             } else if (gamepad2.x) {
@@ -45,7 +45,7 @@ TeleOpPractice extends LinearOpMode {
                 telemetry.addData("Platform Servo Position", robot.platformServo.getPosition());
                 telemetry.addData("Status", "Running");
                 telemetry.update();
-            }
+            }*/
 
         }
         }

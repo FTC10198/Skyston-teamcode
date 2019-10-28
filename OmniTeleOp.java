@@ -42,16 +42,16 @@ public class OmniTeleOp extends LinearOpMode {
             // left stick controls direction
             // right stick X controls rotation
 
-            float gamepad1LeftY = gamepad1.left_stick_y;
-            float gamepad1LeftX = -gamepad1.left_stick_x;
-            float gamepad1RightX = -gamepad1.right_stick_x;
+            double gamepad1LeftY = gamepad1.left_stick_y*.8;
+            double gamepad1LeftX = -gamepad1.left_stick_x*.8;
+            double gamepad1RightX = -gamepad1.right_stick_x*.8;
 
             // holonomic formulas
 
-            float FrontLeftPrep = -gamepad1LeftY - gamepad1LeftX - gamepad1RightX;
-            float FrontRightPrep = gamepad1LeftY - gamepad1LeftX - gamepad1RightX;
-            float BackRightPrep = gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
-            float BackLeftPrep = -gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
+            double FrontLeftPrep = -gamepad1LeftY - gamepad1LeftX - gamepad1RightX;
+            double FrontRightPrep = gamepad1LeftY - gamepad1LeftX - gamepad1RightX;
+            double BackRightPrep = gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
+            double BackLeftPrep = -gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
 
             // clip the right/left values so that the values never exceed +/- 1
             FrontRightPrep = Range.clip(FrontRightPrep, -1, 1);
@@ -138,23 +138,19 @@ public class OmniTeleOp extends LinearOpMode {
             telemetry.update();
             
             //For testing positions to put into auton
-            if (gamepad2.y) {
-                // move to 0 degrees.
-                robot.leftArmServo.setPosition(0);
-                robot.rightArmServo.setPosition(0);
-                telemetry.addData("Platform Servo Position", robot.platformServo.getPosition());
+            if (gamepad2.a) {
+                //arms up
+                robot.leftArmServo.setPosition(0.05);
+                robot.rightArmServo.setPosition(0.95);
+                telemetry.addData("Platform Servo Position", robot.leftArmServo.getPosition());
+                telemetry.addData("Platform Servo Position", robot.rightArmServo.getPosition());
                 telemetry.update();
-            } else if (gamepad2.x) {
-                // move to 90 degrees.
+            } else if (gamepad2.b) {
+                //arms down
                 robot.leftArmServo.setPosition(0.5);
                 robot.rightArmServo.setPosition(0.5);
-                telemetry.addData("Platform Servo Position", robot.platformServo.getPosition());
-                telemetry.update();
-            } else if (gamepad2.a) {
-                // move to 180 degrees.
-                robot.leftArmServo.setPosition(1);
-                robot.rightArmServo.setPosition(1);
-                telemetry.addData("Platform Servo Position", robot.platformServo.getPosition());
+                telemetry.addData("Platform Servo Position", robot.leftArmServo.getPosition());
+                telemetry.addData("Platform Servo Position", robot.rightArmServo.getPosition());
                 telemetry.update();
             }
 

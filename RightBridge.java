@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.util.Range;
 
 @Autonomous
-public class BlueFoundationAuton extends LinearOpMode{
+public class RightBridge extends LinearOpMode{
     private org.firstinspires.ftc.teamcode.HardwareMapping robot = new org.firstinspires.ftc.teamcode.HardwareMapping();
     @Override
     public void runOpMode() {
@@ -20,33 +20,21 @@ public class BlueFoundationAuton extends LinearOpMode{
         telemetry.update();
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
-        
+
         if (opModeIsActive()) {
 
             //drive backwards
-            drive(-0.25,0,0,1000);
-            sleep(1000);
-            //drop arms
-            robot.leftArmServo.setPosition(0.5);
-            robot.rightArmServo.setPosition(0.5);
-            sleep(500);
-            //drive forward, pulling platform
-            drive(0.75,0,0,333);
-            //raise arms
-            robot.leftArmServo.setPosition(0.05);
-            robot.rightArmServo.setPosition(0.95);
-            //go left and park under bridge
-            sleep(500);
-            drive(0,-0.25,0,1000);
+            drive(0.25,0,0,100);
+            sleep(100);
         }
     }
 
     public void drive(double LeftY, double LeftX, double RightX, double time){
         double driftCorrect = .01; //*will have to tune, idea is to counteract rotating because of weight distribution, could add to teleop too
-        
+
         LeftY = -LeftY;
         LeftX = -LeftX;
-        RightX = -RightX - (driftCorrect*(Math.abs(LeftY)+Math.abs(LeftX))); 
+        RightX = -RightX - (driftCorrect*(Math.abs(LeftY)+Math.abs(LeftX)));
         //probably doesn't math out right, but driftCorrect should get scaled by how fast other motors are going
 
 
@@ -77,11 +65,12 @@ public class BlueFoundationAuton extends LinearOpMode{
             robot.backRightMotor.setPower(BackRight);
 
 
-        }
-
-
-
 
         }
+
+
+
+
+    }
 }
 

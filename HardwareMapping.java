@@ -61,6 +61,10 @@ public class HardwareMapping
         leftArmServo  = hwMap.get(Servo.class, "leftArmServo");
         rightArmServo  = hwMap.get(Servo.class, "rightArmServo");
 
+        leftArmServo.setPosition(0.05);
+        rightArmServo.setPosition(0.95);
+
+
         //Define rest.
         imu = hwMap.get(Gyroscope.class, "imu");
         //digitalTouch = hwMap.get(DigitalChannel.class, "digitalTouch");
