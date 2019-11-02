@@ -29,10 +29,10 @@ public class HardwareMapping
     HardwareMap hwMap           =  null;
     private ElapsedTime period  = new ElapsedTime();
 
-    /* Constructor */
+    /* Constructor
     public HardwareMapping(){
     }
-
+    */
     /* Initialize standard Hardware interfaces */
     public void init(HardwareMap ahwMap) {
         // Save reference to Hardware map
