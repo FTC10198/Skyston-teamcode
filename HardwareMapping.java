@@ -9,6 +9,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.GyroSensor;
+import com.qualcomm.robotcore.util.Range;
 
 public class HardwareMapping
 {
@@ -69,5 +70,37 @@ public class HardwareMapping
         imu = hwMap.get(Gyroscope.class, "imu");
         //digitalTouch = hwMap.get(DigitalChannel.class, "digitalTouch");
         //sensorColorRange = hwMap.get(DistanceSensor.class, "sensorColorRange");
+    }
+
+    public void drive(double LeftYIn, double LeftXIn, double RightXIn, double driveTime){
+        double driftCorrect = 0; //*will have to tune, idea is to counteract rotating because of weight distribution, could add to teleop too
+
+        double LeftY = -LeftYIn;
+        double LeftX = -LeftXIn;
+        double RightX = -RightXIn - (driftCorrect*(Math.abs(LeftY)+Math.abs(LeftX)));
+        //probably doesn't math out right, but driftCorrect should get scaled by how fast other motors are going
+
+
+        ElapsedTime runtime2 = new ElapsedTime();
+        runtime2.reset();
+
+        while (runtime2.milliseconds() < driveTime) {
+            double FrontLeftPrep = -LeftY - LeftX - RightX;
+            double FrontRightPrep = LeftY - LeftX - RightX;
+            double BackRightPrep = LeftY + LeftX - RightX;
+            double BackLeftPrep = -LeftY + LeftX - RightX;
+
+            // clip the right/left values so that the values never exceed +/- 1
+            double FrontRight = Range.clip(FrontRightPrep, -1, 1);
+            double FrontLeft = Range.clip(FrontLeftPrep, -1, 1);
+            double BackLeft = Range.clip(BackLeftPrep, -1, 1);
+            double BackRight = Range.clip(BackRightPrep, -1, 1);
+
+            // write the values to the motors
+            frontRightMotor.setPower(FrontRight);
+            frontLeftMotor.setPower(FrontLeft);
+            backLeftMotor.setPower(BackLeft);
+            backRightMotor.setPower(BackRight);
+        }
     }
 }
