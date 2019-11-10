@@ -62,8 +62,8 @@ public class HardwareMapping
         leftArmServo  = hwMap.get(Servo.class, "leftArmServo");
         rightArmServo  = hwMap.get(Servo.class, "rightArmServo");
 
-        leftArmServo.setPosition(0.05);
-        rightArmServo.setPosition(0.95);
+        leftArmServo.setPosition(0);
+        rightArmServo.setPosition(0.5);
 
 
         //Define rest.

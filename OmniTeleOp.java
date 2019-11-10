@@ -140,15 +140,15 @@ public class OmniTeleOp extends LinearOpMode {
             //For testing positions to put into auton
             if (gamepad2.a) {
                 //arms up
-                robot.leftArmServo.setPosition(0.05);
-                robot.rightArmServo.setPosition(0.95);
+                robot.leftArmServo.setPosition(0);
+                robot.rightArmServo.setPosition(0.5);
                 telemetry.addData("Platform Servo Position", robot.leftArmServo.getPosition());
                 telemetry.addData("Platform Servo Position", robot.rightArmServo.getPosition());
                 telemetry.update();
             } else if (gamepad2.b) {
                 //arms down
                 robot.leftArmServo.setPosition(0.5);
-                robot.rightArmServo.setPosition(0.5);
+                robot.rightArmServo.setPosition(0);
                 telemetry.addData("Platform Servo Position", robot.leftArmServo.getPosition());
                 telemetry.addData("Platform Servo Position", robot.rightArmServo.getPosition());
                 telemetry.update();
