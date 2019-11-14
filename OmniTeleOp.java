@@ -42,8 +42,8 @@ public class OmniTeleOp extends LinearOpMode {
             // left stick controls direction
             // right stick X controls rotation
 
-            double gamepad1LeftY = gamepad1.left_stick_y*.8;
-            double gamepad1LeftX = -gamepad1.left_stick_x*.8;
+            double gamepad1LeftY = gamepad1.left_stick_y;
+            double gamepad1LeftX = -gamepad1.left_stick_x;
             double gamepad1RightX = -gamepad1.right_stick_x*.7;
 
             // holonomic formulas
