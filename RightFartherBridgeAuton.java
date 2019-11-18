@@ -23,9 +23,11 @@ public class RightFartherBridgeAuton extends LinearOpMode{
 
         if (opModeIsActive()) {
 
-            sleep(23000);
-            robot.drive(0,0,0.25,100);
-            robot.drive(.25 ,0,0,100);
+            sleep(20000);
+            //drive forward
+            robot.drive(0.2,0,0,3000);
+            //drive left
+            robot.drive(0,0.2,0,500);
         }
     }
 }

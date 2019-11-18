@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.util.Range;
 
 @Autonomous
-public class BlueFoundationAuton extends LinearOpMode{
+public class BlueFoundationFartherAuton extends LinearOpMode{
     private org.firstinspires.ftc.teamcode.HardwareMapping robot = new org.firstinspires.ftc.teamcode.HardwareMapping();
     @Override
     public void runOpMode() {
@@ -20,7 +20,7 @@ public class BlueFoundationAuton extends LinearOpMode{
         telemetry.update();
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
-        
+
         if (opModeIsActive()) {
 
             //drive backwards
@@ -39,7 +39,9 @@ public class BlueFoundationAuton extends LinearOpMode{
             robot.rightArmServo.setPosition(0.5);
             //go left and park under bridge
             sleep(2000);
-            robot.drive(0,-0.3,0,4000);
+            robot.drive(0,-0.3,0,2000);
+            robot.drive(-.2,0,0,3000);
+            robot.drive(0,-0.3,0,2000);
         }
     }
 }

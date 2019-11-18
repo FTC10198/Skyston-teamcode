@@ -23,9 +23,9 @@ public class RightBridge extends LinearOpMode{
 
         if (opModeIsActive()) {
 
-            //drive backwards
+            //drive left
             sleep(23000);
-            robot.drive(0.25,0,0,100);
+            robot.drive(0,-0.2,0,500);
         }
     }
 }

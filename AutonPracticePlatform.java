@@ -10,6 +10,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous
+@Disabled
 public class AutonPracticePlatform extends LinearOpMode {
 
     /* Declare OpMode members. */
