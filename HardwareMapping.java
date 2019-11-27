@@ -103,4 +103,38 @@ public class HardwareMapping
             backRightMotor.setPower(BackRight);
         }
     }
+
+    public void driveStall(double LeftYIn, double LeftXIn, double RightXIn, double driveTimeStall){
+        double driftCorrect = 0; //*will have to tune, idea is to counteract rotating because of weight distribution, could add to teleop too
+
+        double LeftY = -LeftYIn;
+        double LeftX = -LeftXIn;
+        double RightX = -RightXIn - (driftCorrect*(Math.abs(LeftY)+Math.abs(LeftX)));
+        //probably doesn't math out right, but driftCorrect should get scaled by how fast other motors are going
+
+
+        ElapsedTime runtime2 = new ElapsedTime();
+        runtime2.reset();
+
+        while (runtime2.milliseconds() < driveTimeStall) {
+            double FrontLeftPrep = -LeftY - LeftX - RightX;
+            double FrontRightPrep = LeftY - LeftX - RightX;
+            double BackRightPrep = LeftY + LeftX - RightX;
+            double BackLeftPrep = -LeftY + LeftX - RightX;
+
+            // clip the right/left values so that the values never exceed +/- 1
+            double FrontRight = Range.clip(FrontRightPrep, -1, 1);
+            double FrontLeft = Range.clip(FrontLeftPrep, -1, 1);
+            double BackLeft = Range.clip(BackLeftPrep, -1, 1);
+            double BackRight = Range.clip(BackRightPrep, -1, 1);
+
+            // write the values to the motors
+            frontRightMotor.setPower(FrontRight);
+            frontLeftMotor.setPower(FrontLeft);
+            backLeftMotor.setPower(BackLeft);
+            backRightMotor.setPower(BackRight);
+            leftArmServo.setPosition(0.5);
+            rightArmServo.setPosition(0);
+        }
+    }
 }

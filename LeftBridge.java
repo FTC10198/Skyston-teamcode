@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.util.Range;
 
 @Autonomous
-public class RightFartherBridgeAuton extends LinearOpMode{
+public class LeftBridge extends LinearOpMode{
     private org.firstinspires.ftc.teamcode.HardwareMapping robot = new org.firstinspires.ftc.teamcode.HardwareMapping();
     @Override
     public void runOpMode() {
@@ -23,11 +23,9 @@ public class RightFartherBridgeAuton extends LinearOpMode{
 
         if (opModeIsActive()) {
 
-            sleep(20000);
-            //drive forward
-            robot.drive(0.2,0,0,3500);
             //drive left
-            robot.drive(0,-0.2,0,500);
+            sleep(23000);
+            robot.drive(0,0.2,0,500);
         }
     }
 }
