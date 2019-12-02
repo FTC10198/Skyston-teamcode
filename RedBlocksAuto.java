@@ -13,10 +13,10 @@ import com.qualcomm.robotcore.util.Range;
 
 
 @Autonomous
-public class BlueBlocksAuto extends LinearOpMode{
+public class RedBlocksAuto extends LinearOpMode{
     private org.firstinspires.ftc.teamcode.HardwareMapping robot = new org.firstinspires.ftc.teamcode.HardwareMapping();
 
-   VuforiaStuff.skystonePos pos;
+    VuforiaStuff.skystonePos pos;
 
     @Override
     public void runOpMode() {
@@ -26,14 +26,13 @@ public class BlueBlocksAuto extends LinearOpMode{
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        pos = robot.vuforiaStuff.vuforiascan(true, false);
+        pos = robot.vuforiaStuff.vuforiascan(true, true);
 
 
         telemetry.addData("position",pos);
         telemetry.update();
-    if (opModeIsActive()) {
+        if (opModeIsActive()) {
 
         }
     }
 }
-

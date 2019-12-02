@@ -80,9 +80,9 @@ public class HardwareMapping
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
-        vuforiaStuff = new VuforiaStuff(vuforia);
         //  Instantiate the Vuforia engine
         vuforia = ClassFactory.getInstance().createVuforia(parameters);
+        vuforiaStuff = new VuforiaStuff(vuforia);
 
         //Define rest.
         BNO055IMU gyro;
