@@ -22,12 +22,11 @@ public class TestAuto extends LinearOpMode{
         waitForStart();
 
         if (opModeIsActive()) {
-            robot.driveAtDirection(45,1000, .25);
-            robot.driveAtDirection(90,1000,.25);
-            robot.driveAtDirection(135,1000, .25);
-            robot.driveAtDirection(225,1000, .25);
-            robot.driveAtDirection(270,1000,.25);
-            robot.driveAtDirection(360,1000, .25);
+            robot.driveAtDirection(0,10000, .25);
+        telemetry.addData("heading",robot.imu.readCurrentHeading());
+        telemetry.addData("left encoder" ,robot.frontLeftMotor.getCurrentPosition());
+        telemetry.update();
+
         }
     }
 }

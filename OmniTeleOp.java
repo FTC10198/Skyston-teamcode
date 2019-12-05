@@ -12,6 +12,10 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.util.Range;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+
 
 //    Robot wheel mapping:
 //        X FRONT X
@@ -78,10 +82,10 @@ public class OmniTeleOp extends LinearOpMode {
             telemetry.addData("Text", "*** Robot Data***");
             telemetry.addData("Joy XL YL XR", String.format("%.2f", gamepad1LeftX) + " " +
                     String.format("%.2f", gamepad1LeftY) + " " + String.format("%.2f", gamepad1RightX));
-            telemetry.addData("f left pwr", "front left  pwr: " + String.format("%.2f", FrontLeft));
-            telemetry.addData("f right pwr", "front right pwr: " + String.format("%.2f", FrontRight));
-            telemetry.addData("b right pwr", "back right pwr: " + String.format("%.2f", BackRight));
-            telemetry.addData("b left pwr", "back left pwr: " + String.format("%.2f", BackLeft));
+//            telemetry.addData("f left pwr", "front left  pwr: " + String.format("%.2f", FrontLeft));
+//            telemetry.addData("f right pwr", "front right pwr: " + String.format("%.2f", FrontRight));
+//            telemetry.addData("b right pwr", "back right pwr: " + String.format("%.2f", BackRight));
+//            telemetry.addData("b left pwr", "back left pwr: " + String.format("%.2f", BackLeft));
 
             //double intakeLeftPower = robot.intakeLeft.getPower();
             //double intakeRightPower = robot.intakeRight.getPower();
@@ -139,20 +143,31 @@ public class OmniTeleOp extends LinearOpMode {
             
             //For testing positions to put into auton
             if (gamepad2.a) {
-                //arms up
+                //in piece down
                 robot.leftArmServo.setPosition(0);
                 robot.rightArmServo.setPosition(0.5);
                 telemetry.addData("Platform Servo Position", robot.leftArmServo.getPosition());
                 telemetry.addData("Platform Servo Position", robot.rightArmServo.getPosition());
                 telemetry.update();
             } else if (gamepad2.b) {
-                //arms down
+                //out piece down
                 robot.leftArmServo.setPosition(0.5);
+                robot.rightArmServo.setPosition(1);
+                telemetry.addData("Platform Servo Position", robot.leftArmServo.getPosition());
+                telemetry.addData("Platform Servo Position", robot.rightArmServo.getPosition());
+                telemetry.update();
+            }else if (gamepad2.b) {
+                // everything out
+                robot.leftArmServo.setPosition(1);
                 robot.rightArmServo.setPosition(0);
                 telemetry.addData("Platform Servo Position", robot.leftArmServo.getPosition());
                 telemetry.addData("Platform Servo Position", robot.rightArmServo.getPosition());
                 telemetry.update();
             }
+
+            telemetry.addData("y heading",robot.imu.readCurrentHeading());
+//            telemetry.addData("left encoder" ,robot.frontLeftMotor.getCurrentPosition());
+            telemetry.update();
 
             telemetry.addData("Status", "Running");
             telemetry.update();

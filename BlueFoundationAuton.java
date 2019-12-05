@@ -26,19 +26,21 @@ public class BlueFoundationAuton extends LinearOpMode{
             //drive backwards
             robot.drive(-0.2,0,0,3700);
             sleep(200);
-            //drop arms
+            //out arms down
             robot.leftArmServo.setPosition(0.5);
-            robot.rightArmServo.setPosition(0);
+            robot.rightArmServo.setPosition(1);
             sleep(2000);
             //drive forward
             robot.driveStall(0.25,0,0,4000);
             sleep(200);
+            //in arm down for left servo
+            robot.leftArmServo.setPosition(0);
             // turns left around 90 degrees
             robot.driveStall(0,0,-.7,1050);
             sleep(200);
             //raise arms
-            robot.leftArmServo.setPosition(0);
-            robot.rightArmServo.setPosition(0.5);
+            robot.leftArmServo.setPosition(1);
+            robot.rightArmServo.setPosition(0);
             //go left and park under bridge
             sleep(2000);
             robot.drive(.3,0,0,4000);

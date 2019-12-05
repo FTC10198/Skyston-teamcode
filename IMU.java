@@ -44,7 +44,7 @@ public class IMU {
         double[] values;
 
         values = new double[3];
-        angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+        angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.YXZ, AngleUnit.DEGREES);
         values[0] = angles.firstAngle;
         values[1] = angles.secondAngle;
         values[2] = angles.thirdAngle;

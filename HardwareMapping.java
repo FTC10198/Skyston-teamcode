@@ -26,6 +26,7 @@ public class HardwareMapping
     public DcMotor  intakeLeft  = null;
     public Servo    leftArmServo    = null;
     public Servo    rightArmServo    = null;
+    public Servo    liftServo    = null;
     public VuforiaStuff vuforiaStuff;
     private VuforiaLocalizer vuforia;
     private static final String VUFORIA_KEY = "ATOlfJr/////AAABmUTNuojv10IyojJgb1ipUl5AFc9IdiMS/PX55ILLnxS3ZPIjWu/kKu4fRsmZnfgrOfXcXnYyoPbHFCQOiBSJR1y2voTvDBlVWM1Lq2YNVgaOBT5g+00yR9u7kHuOxaCouUCcQUjbu2T3CFsTeLzk5snuYDnpkERDb//651aurmTW+dlNlmHFiP6P5h2co6MZQNfSQc1/fVKM7bS7STDCsX1Ro4Nyj0rfTVCp8kK/rHzsyZ8JcZ1EvYz746d0Ma6z9+MCoZ7EGHw9XdK3dW3sYlXVXTLGMDVEbqAnfqlfnh7C67SGrpkytPabcbVWAilptCGmzykRg7rZt6HlS/qM10diikwTZL9aIyvZZFIY3yWf";
@@ -174,13 +175,33 @@ public class HardwareMapping
             double LeftX;
             double RightX = 0;
 
-            LeftX = Math.sin(AngleIn)*LeftXMotorFix*motorPower;
-            LeftY = Math.cos(AngleIn)*LeftYMotorFix*motorPower;
+            LeftX = Math.sin(Math.toRadians(AngleIn))*LeftXMotorFix*motorPower;
+            LeftY = Math.cos(Math.toRadians(AngleIn))*LeftYMotorFix*motorPower;
+
+            double correctionPower = 0;
+            if (Math.abs(startingHeading-imu.readCurrentHeading())<.2){
+                correctionPower = 0;
+            }else if (Math.abs(startingHeading-imu.readCurrentHeading())<1) {
+                correctionPower = 0.01;
+            }else if (Math.abs(startingHeading-imu.readCurrentHeading())<2.5) {
+                correctionPower = 0.025;
+            }else if (Math.abs(startingHeading-imu.readCurrentHeading())<5) {
+                correctionPower = 0.05;
+            }else if (Math.abs(startingHeading-imu.readCurrentHeading())<10) {
+                correctionPower = 0.1;
+            }else if (Math.abs(startingHeading-imu.readCurrentHeading())<15) {
+                correctionPower = 0.15;
+            }else if (Math.abs(startingHeading-imu.readCurrentHeading())<20) {
+                correctionPower = 0.2;
+            }else if (Math.abs(startingHeading-imu.readCurrentHeading())>=20) {
+                correctionPower = 0.3;
+            }
+
 
             if (startingHeading > imu.readCurrentHeading()){
-                RightX = .25*RightXMotorFix;
+                RightX = correctionPower*RightXMotorFix;
             }else if (startingHeading < imu.readCurrentHeading()){
-                RightX = -.25*RightXMotorFix;
+                RightX = -correctionPower*RightXMotorFix;
             }else if (startingHeading == imu.readCurrentHeading()){
                 RightX = 0;
             }
