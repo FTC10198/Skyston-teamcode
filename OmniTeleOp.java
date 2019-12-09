@@ -75,7 +75,6 @@ public class OmniTeleOp extends LinearOpMode {
             robot.backLeftMotor.setPower(BackLeft);
             robot.backRightMotor.setPower(BackRight);
 
-
             /*
              * Telemetry for debugging
              */
@@ -140,7 +139,7 @@ public class OmniTeleOp extends LinearOpMode {
             telemetry.addData ("Intake System", String.format("%.2f", robot.intakeLeft.getPower()) + " " +
                         String.format("%.2f", robot.intakeRight.getPower()));
             telemetry.update();
-            
+
             //For testing positions to put into auton
             if (gamepad2.a) {
                 //in piece down
@@ -156,15 +155,40 @@ public class OmniTeleOp extends LinearOpMode {
                 telemetry.addData("Platform Servo Position", robot.leftArmServo.getPosition());
                 telemetry.addData("Platform Servo Position", robot.rightArmServo.getPosition());
                 telemetry.update();
-            }else if (gamepad2.b) {
+            }else if (gamepad2.y) {
                 // everything out
                 robot.leftArmServo.setPosition(1);
                 robot.rightArmServo.setPosition(0);
                 telemetry.addData("Platform Servo Position", robot.leftArmServo.getPosition());
                 telemetry.addData("Platform Servo Position", robot.rightArmServo.getPosition());
                 telemetry.update();
+            }else if (gamepad2.left_bumper) {
+                //arm away from robot
+                robot.liftServo.setPosition(1);
+                telemetry.addData("Arm Servo Position", robot.liftServo.getPosition());
+                telemetry.update();
+            }else if (gamepad2.right_bumper) {
+                //arm close to robot
+                robot.liftServo.setPosition(0);
+                telemetry.addData("Arm Servo Position", robot.liftServo.getPosition());
+                telemetry.update();
+            }else if (gamepad2.dpad_right) {
+                //clamp is open
+                robot.clampServo.setPosition(.6);
+                telemetry.addData("Clamp Position", robot.clampServo.getPosition());
+                telemetry.update();
+            }else if (gamepad2.dpad_left) {
+                //clamp is closed
+                robot.clampServo.setPosition(0);
+                telemetry.addData("Clamp Position", robot.clampServo.getPosition());
+                telemetry.update();
             }
-
+            if  (gamepad1.a) {
+                robot.frontRightMotor.setPower(.3);
+                robot.frontLeftMotor.setPower(.3);
+                robot.backRightMotor.setPower(.3);
+                robot.backLeftMotor.setPower(.3);
+            }
             telemetry.addData("y heading",robot.imu.readCurrentHeading());
 //            telemetry.addData("left encoder" ,robot.frontLeftMotor.getCurrentPosition());
             telemetry.update();

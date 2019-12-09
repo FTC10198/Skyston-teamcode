@@ -27,6 +27,7 @@ public class HardwareMapping
     public Servo    leftArmServo    = null;
     public Servo    rightArmServo    = null;
     public Servo    liftServo    = null;
+    public Servo    clampServo  = null;
     public VuforiaStuff vuforiaStuff;
     private VuforiaLocalizer vuforia;
     private static final String VUFORIA_KEY = "ATOlfJr/////AAABmUTNuojv10IyojJgb1ipUl5AFc9IdiMS/PX55ILLnxS3ZPIjWu/kKu4fRsmZnfgrOfXcXnYyoPbHFCQOiBSJR1y2voTvDBlVWM1Lq2YNVgaOBT5g+00yR9u7kHuOxaCouUCcQUjbu2T3CFsTeLzk5snuYDnpkERDb//651aurmTW+dlNlmHFiP6P5h2co6MZQNfSQc1/fVKM7bS7STDCsX1Ro4Nyj0rfTVCp8kK/rHzsyZ8JcZ1EvYz746d0Ma6z9+MCoZ7EGHw9XdK3dW3sYlXVXTLGMDVEbqAnfqlfnh7C67SGrpkytPabcbVWAilptCGmzykRg7rZt6HlS/qM10diikwTZL9aIyvZZFIY3yWf";
@@ -72,9 +73,15 @@ public class HardwareMapping
         // Define and initialize ALL installed servos.
         leftArmServo  = hwMap.get(Servo.class, "leftArmServo");
         rightArmServo  = hwMap.get(Servo.class, "rightArmServo");
+        liftServo  = hwMap.get(Servo.class, "liftServo");
+        clampServo  = hwMap.get(Servo.class, "clampServo");
+
+
 
         leftArmServo.setPosition(0);
         rightArmServo.setPosition(0.5);
+        liftServo.setPosition(0);
+        clampServo.setPosition(0);
 
         //vuforia things
         int cameraMonitorViewId = hwMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hwMap.appContext.getPackageName());
@@ -92,6 +99,7 @@ public class HardwareMapping
         imu.initialize();
         //digitalTouch = hwMap.get(DigitalChannel.class, "digitalTouch");
         //sensorColorRange = hwMap.get(DistanceSensor.class, "sensorColorRange");
+
     }
 
     public void drive(double LeftYIn, double LeftXIn, double RightXIn, double driveTime){
@@ -178,33 +186,33 @@ public class HardwareMapping
             LeftX = Math.sin(Math.toRadians(AngleIn))*LeftXMotorFix*motorPower;
             LeftY = Math.cos(Math.toRadians(AngleIn))*LeftYMotorFix*motorPower;
 
-            double correctionPower = 0;
-            if (Math.abs(startingHeading-imu.readCurrentHeading())<.2){
-                correctionPower = 0;
-            }else if (Math.abs(startingHeading-imu.readCurrentHeading())<1) {
-                correctionPower = 0.01;
-            }else if (Math.abs(startingHeading-imu.readCurrentHeading())<2.5) {
-                correctionPower = 0.025;
-            }else if (Math.abs(startingHeading-imu.readCurrentHeading())<5) {
-                correctionPower = 0.05;
-            }else if (Math.abs(startingHeading-imu.readCurrentHeading())<10) {
-                correctionPower = 0.1;
-            }else if (Math.abs(startingHeading-imu.readCurrentHeading())<15) {
-                correctionPower = 0.15;
-            }else if (Math.abs(startingHeading-imu.readCurrentHeading())<20) {
-                correctionPower = 0.2;
-            }else if (Math.abs(startingHeading-imu.readCurrentHeading())>=20) {
-                correctionPower = 0.3;
-            }
+//            double correctionPower = 0;
+//            if (Math.abs(imu.readCurrentHeading()-startingHeading)<.2){
+//                correctionPower = 0;
+//            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<1) {
+//                correctionPower = 0.005;
+//            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<2.5) {
+//                correctionPower = 0.01;
+//            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<5) {
+//                correctionPower = 0.015;
+//            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<10) {
+//                correctionPower = 0.02;
+//            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<15) {
+//                correctionPower = 0.03;
+//            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<20) {
+//                correctionPower = 0.04;
+//            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)>=20) {
+//                correctionPower = 0.05;
+//            }
 
 
-            if (startingHeading > imu.readCurrentHeading()){
-                RightX = correctionPower*RightXMotorFix;
-            }else if (startingHeading < imu.readCurrentHeading()){
-                RightX = -correctionPower*RightXMotorFix;
-            }else if (startingHeading == imu.readCurrentHeading()){
-                RightX = 0;
-            }
+//            if (startingHeading > imu.readCurrentHeading()){
+//                RightX = correctionPower*RightXMotorFix;
+//            }else if (startingHeading < imu.readCurrentHeading()){
+//                RightX = -correctionPower*RightXMotorFix;
+//            }else if (startingHeading == imu.readCurrentHeading()){
+//                RightX = 0;
+//            }
 
             double FrontLeftPrep = -LeftY - LeftX - RightX;
             double FrontRightPrep = LeftY - LeftX - RightX;
@@ -234,6 +242,37 @@ public class HardwareMapping
             } else if (imu.readCurrentHeading() - angleIn < 0.5) {
                 RightX = -motorPower;
             }
+
+            // write the values to the motors
+            frontRightMotor.setPower(RightX);
+            frontLeftMotor.setPower(RightX);
+            backLeftMotor.setPower(RightX);
+            backRightMotor.setPower(RightX);
+        }
+    }
+
+    public void turnRight(double driveDistanceRight, double motorPowerRight) {
+        frontLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        double frontLeftStart = frontLeftMotor.getCurrentPosition();
+
+        while ((frontLeftMotor.getCurrentPosition() - frontLeftStart) < driveDistanceRight) {
+            double RightX = motorPowerRight;
+
+            // write the values to the motors
+            frontRightMotor.setPower(RightX);
+            frontLeftMotor.setPower(RightX);
+            backLeftMotor.setPower(RightX);
+            backRightMotor.setPower(RightX);
+        }
+    }
+
+    public void turnLeft(double driveDistanceLeft, double motorPowerLeft) {
+        frontLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        double frontLeftStart = frontLeftMotor.getCurrentPosition();
+
+        while (Math.abs(frontLeftMotor.getCurrentPosition() - frontLeftStart)
+                < driveDistanceLeft) {
+            double RightX = -motorPowerLeft;
 
             // write the values to the motors
             frontRightMotor.setPower(RightX);

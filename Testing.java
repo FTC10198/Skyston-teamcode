@@ -130,28 +130,28 @@ public class Testing extends LinearOpMode {
             
             //For testing positions to put into auton
             if (gamepad2.a) {
-                robot.leftArmServo.setPosition(0);
-                robot.rightArmServo.setPosition(0);
+                robot.driveAtDirection(90, 450, .2);
             } else if (gamepad2.b) {
-                robot.leftArmServo.setPosition(0.5);
-                robot.rightArmServo.setPosition(0.5);
+                robot.driveAtDirection(95, 400, .2);
             } else if (gamepad2.x) {
-                robot.leftArmServo.setPosition(1);
-                robot.rightArmServo.setPosition(1);
+                robot.driveAtDirection(100, 350, .2);
             } else if (gamepad2.y) {
-                robot.drive(0,0,-.25,1250);
+                //robot.driveAtDirection(180, 750, .2);
+                robot.driveAtDirection(105, 350, .2);
             } else if (gamepad1.a) {
-                robot.drive(0,0,-.25,1500);
+                robot.turnRight(500,.15);
             } else if (gamepad1.b) {
-                robot.drive(0,0,-.25,1750);
+                robot.turnRight(600,.15);
             } else if (gamepad1.x) {
-                robot.drive(0,0,-.25,2000);
+                robot.turnRight(700,.15);
             } else if (gamepad1.y) {
-                robot.drive(0,0,-.25,2500);
+                robot.turnRight(800,.15);
             }
+
+        }
 
             telemetry.addData("Status", "Running");
             telemetry.update();
         }
     }
-}
+
