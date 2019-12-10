@@ -1,4 +1,5 @@
 package org.firstinspires.ftc.teamcode;
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -18,15 +19,15 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 
 
 //    Robot wheel mapping:
-//        X FRONT X
-//        X           X
+//            X FRONT X
+//          X           X
 //        X  FL       FR  X
-//        X
-//        XXX
-//        X
+//                X
+//               XXX
+//                X
 //        X  BL       BR  X
-//        X           X
-//        X       X
+//          X           X
+//            X       X
 //        */
 @TeleOp
 //@Disabled
@@ -42,13 +43,16 @@ public class OmniTeleOp extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         // run until the end of the match (driver presses STOP)
+
+       double slow = 1;
+
         while (opModeIsActive()) {
             // left stick controls direction
             // right stick X controls rotation
 
-            double gamepad1LeftY = gamepad1.left_stick_y;
-            double gamepad1LeftX = -gamepad1.left_stick_x;
-            double gamepad1RightX = -gamepad1.right_stick_x*.7;
+            double gamepad1LeftY = gamepad1.left_stick_y*slow;
+            double gamepad1LeftX = -gamepad1.left_stick_x*slow;
+            double gamepad1RightX = -gamepad1.right_stick_x*.7*slow;
 
             // holonomic formulas
 
@@ -179,15 +183,16 @@ public class OmniTeleOp extends LinearOpMode {
                 telemetry.update();
             }else if (gamepad2.dpad_left) {
                 //clamp is closed
-                robot.clampServo.setPosition(0);
+                robot.clampServo.setPosition(.3);
                 telemetry.addData("Clamp Position", robot.clampServo.getPosition());
                 telemetry.update();
             }
             if  (gamepad1.a) {
-                robot.frontRightMotor.setPower(.3);
-                robot.frontLeftMotor.setPower(.3);
-                robot.backRightMotor.setPower(.3);
-                robot.backLeftMotor.setPower(.3);
+                if (slow == 1) {
+                    slow = .3;
+                } else if (slow == .3) {
+                    slow = 1;
+                }
             }
             telemetry.addData("y heading",robot.imu.readCurrentHeading());
 //            telemetry.addData("left encoder" ,robot.frontLeftMotor.getCurrentPosition());
