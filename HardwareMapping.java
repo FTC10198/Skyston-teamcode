@@ -80,8 +80,8 @@ public class HardwareMapping
 
         leftArmServo.setPosition(0);
         rightArmServo.setPosition(0.5);
-        liftServo.setPosition(0);
-        clampServo.setPosition(0);
+        liftServo.setPosition(0.05);
+        clampServo.setPosition(0.5);
 
         //vuforia things
         int cameraMonitorViewId = hwMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hwMap.appContext.getPackageName());

@@ -173,17 +173,17 @@ public class OmniTeleOp extends LinearOpMode {
                 telemetry.update();
             }else if (gamepad2.right_bumper) {
                 //arm close to robot
-                robot.liftServo.setPosition(0);
+                robot.liftServo.setPosition(0.05);
                 telemetry.addData("Arm Servo Position", robot.liftServo.getPosition());
                 telemetry.update();
             }else if (gamepad2.dpad_right) {
                 //clamp is open
-                robot.clampServo.setPosition(.6);
+                robot.clampServo.setPosition(.5);
                 telemetry.addData("Clamp Position", robot.clampServo.getPosition());
                 telemetry.update();
             }else if (gamepad2.dpad_left) {
                 //clamp is closed
-                robot.clampServo.setPosition(.3);
+                robot.clampServo.setPosition(.35);
                 telemetry.addData("Clamp Position", robot.clampServo.getPosition());
                 telemetry.update();
             }

@@ -119,9 +119,9 @@ public class VuforiaStuff {
                 cropWidth = (int) ((450.0 / 720.0) * bitmap.getWidth());
                 cropHeight = (int) ((100.0 / 480.0) * bitmap.getHeight());
             } else {
-                cropStartX = (int) ((320.0 / 1280.0) * bitmap.getWidth());
-                cropStartY = (int) ((360.0 / 720.0) * bitmap.getHeight());
-                cropWidth = (int) ((670.0 / 1280.0) * bitmap.getWidth());
+                cropStartX = (int) ((160.0 / 1280.0) * bitmap.getWidth()); //was 320
+                cropStartY = (int) ((180.0 / 720.0) * bitmap.getHeight()); //was 360
+                cropWidth = (int) ((750.0 / 1280.0) * bitmap.getWidth()); //was 670
                 cropHeight = (int) ((165.0 / 720.0) * bitmap.getHeight());
             }
 
@@ -242,11 +242,11 @@ public class VuforiaStuff {
         }
 */
         if (blackYellowRatioL > blackYellowRatioC && blackYellowRatioL > blackYellowRatioR) {
-            pos = skystonePos.LEFT;
+            pos = skystonePos.RIGHT; //was left, but image upside down
         } else if (blackYellowRatioC > blackYellowRatioL && blackYellowRatioC > blackYellowRatioR) {
             pos = skystonePos.CENTER;
         } else {
-            pos = skystonePos.RIGHT;
+            pos = skystonePos.LEFT; //was right, but image upside down
         }
 
 //        DbgLog.msg("black/yellow L: " + blackCountL + "/" + yellowCountL);
