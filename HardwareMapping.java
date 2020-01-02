@@ -186,33 +186,33 @@ public class HardwareMapping
             LeftX = Math.sin(Math.toRadians(AngleIn))*LeftXMotorFix*motorPower;
             LeftY = Math.cos(Math.toRadians(AngleIn))*LeftYMotorFix*motorPower;
 
-//            double correctionPower = 0;
-//            if (Math.abs(imu.readCurrentHeading()-startingHeading)<.2){
-//                correctionPower = 0;
-//            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<1) {
-//                correctionPower = 0.005;
-//            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<2.5) {
-//                correctionPower = 0.01;
-//            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<5) {
-//                correctionPower = 0.015;
-//            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<10) {
-//                correctionPower = 0.02;
-//            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<15) {
-//                correctionPower = 0.03;
-//            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<20) {
-//                correctionPower = 0.04;
-//            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)>=20) {
-//                correctionPower = 0.05;
-//            }
+            double correctionPower = 0;
+            if (Math.abs(imu.readCurrentHeading()-startingHeading)<.2){
+                correctionPower = 0;
+            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<1) {
+                correctionPower = 0.005;
+            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<2.5) {
+                correctionPower = 0.01;
+            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<5) {
+                correctionPower = 0.015;
+            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<10) {
+                correctionPower = 0.02;
+            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<15) {
+                correctionPower = 0.03;
+            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<20) {
+                correctionPower = 0.04;
+            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)>=20) {
+                correctionPower = 0.05;
+            }
 
 
-//            if (startingHeading > imu.readCurrentHeading()){
-//                RightX = correctionPower*RightXMotorFix;
-//            }else if (startingHeading < imu.readCurrentHeading()){
-//                RightX = -correctionPower*RightXMotorFix;
-//            }else if (startingHeading == imu.readCurrentHeading()){
-//                RightX = 0;
-//            }
+            if (startingHeading > imu.readCurrentHeading()){
+                RightX = -correctionPower*RightXMotorFix;
+            }else if (startingHeading < imu.readCurrentHeading()){
+                RightX = correctionPower*RightXMotorFix;
+            }else if (startingHeading == imu.readCurrentHeading()){
+               RightX = 0;
+            }
 
             double FrontLeftPrep = -LeftY - LeftX - RightX;
             double FrontRightPrep = LeftY - LeftX - RightX;
