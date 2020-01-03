@@ -194,21 +194,29 @@ public class HardwareMapping
 
             double correctionPower = 0;
             if (Math.abs(imu.readCurrentHeading()-startingHeading)<.2){
+//                correctionPower = 0;
                 correctionPower = 0;
             }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<1) {
-                correctionPower = 0.005;
+//                correctionPower = 0.005;
+                correctionPower = motorPower*.15;
             }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<2.5) {
-                correctionPower = 0.01;
+//                correctionPower = 0.01;
+                correctionPower = motorPower*.2;
             }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<5) {
-                correctionPower = 0.015;
+//                correctionPower = 0.015;
+                correctionPower = motorPower*.25;
             }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<10) {
-                correctionPower = 0.02;
+//                correctionPower = 0.02;
+                correctionPower = motorPower*.3;
             }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<15) {
-                correctionPower = 0.03;
+//                correctionPower = 0.03;
+                correctionPower = motorPower*.35;
             }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<20) {
-                correctionPower = 0.04;
+//                correctionPower = 0.04;
+                correctionPower = motorPower*.4;
             }else if (Math.abs(imu.readCurrentHeading()-startingHeading)>=20) {
-                correctionPower = 0.05;
+//                correctionPower = 0.05;
+                correctionPower = motorPower*.45;
             }
 
 
@@ -242,12 +250,12 @@ public class HardwareMapping
     public void turnToAngle(double angleIn, double motorPower) {
         double RightX = 0;
 
-        while (Math.abs(imu.readCurrentHeading() - angleIn) > 0.5) {
-            if (imu.readCurrentHeading() - angleIn > 0.5) {
-                RightX = motorPower;
-            } else if (imu.readCurrentHeading() - angleIn < 0.5) {
+        while (Math.abs(imu.readCurrentHeading() - angleIn) > 10) {
+            if (imu.readCurrentHeading() - angleIn > 10) {
                 RightX = -motorPower;
-            }
+            } else if (imu.readCurrentHeading() - angleIn < 10) {
+                RightX = motorPower;
+            } else RightX = 0;
 
             // write the values to the motors
             frontRightMotor.setPower(RightX);
