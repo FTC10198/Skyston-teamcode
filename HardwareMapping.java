@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gyroscope;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -24,10 +25,12 @@ public class HardwareMapping
     public DcMotor  backRightMotor  = null;
     public DcMotor  intakeRight   = null;
     public DcMotor  intakeLeft  = null;
+    public DcMotor  linearLift  = null;
     public Servo    leftArmServo    = null;
     public Servo    rightArmServo    = null;
     public Servo    liftServo    = null;
     public Servo    clampServo  = null;
+    public CRServo    gateServo  = null;
     public VuforiaStuff vuforiaStuff;
     private VuforiaLocalizer vuforia;
     private static final String VUFORIA_KEY = "ATOlfJr/////AAABmUTNuojv10IyojJgb1ipUl5AFc9IdiMS/PX55ILLnxS3ZPIjWu/kKu4fRsmZnfgrOfXcXnYyoPbHFCQOiBSJR1y2voTvDBlVWM1Lq2YNVgaOBT5g+00yR9u7kHuOxaCouUCcQUjbu2T3CFsTeLzk5snuYDnpkERDb//651aurmTW+dlNlmHFiP6P5h2co6MZQNfSQc1/fVKM7bS7STDCsX1Ro4Nyj0rfTVCp8kK/rHzsyZ8JcZ1EvYz746d0Ma6z9+MCoZ7EGHw9XdK3dW3sYlXVXTLGMDVEbqAnfqlfnh7C67SGrpkytPabcbVWAilptCGmzykRg7rZt6HlS/qM10diikwTZL9aIyvZZFIY3yWf";
@@ -56,6 +59,7 @@ public class HardwareMapping
         backRightMotor = hwMap.get(DcMotor.class, "backRightMotor");
         intakeRight  = hwMap.get(DcMotor.class, "intakeRight");
         intakeLeft = hwMap.get(DcMotor.class, "intakeLeft");
+        linearLift = hwMap.get(DcMotor.class, "linearLift");
        // leftmotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
        // rightmotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
 
@@ -66,6 +70,7 @@ public class HardwareMapping
         backRightMotor.setPower(0);
         intakeRight.setPower(0);
         intakeLeft.setPower(0);
+        linearLift.setPower(0);
 
         frontLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         frontRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -75,6 +80,7 @@ public class HardwareMapping
         rightArmServo  = hwMap.get(Servo.class, "rightArmServo");
         liftServo  = hwMap.get(Servo.class, "liftServo");
         clampServo  = hwMap.get(Servo.class, "clampServo");
+        gateServo  = hwMap.get(CRServo.class, "gateServo");
 
 
 
