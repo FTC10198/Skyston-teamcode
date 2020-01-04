@@ -42,7 +42,7 @@ public class BlueBlocksAuto extends LinearOpMode{
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 1800, .2);
                     //pause to get block
-                    sleep(1200);
+                    sleep(1000);
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
                     //back up
@@ -87,7 +87,7 @@ public class BlueBlocksAuto extends LinearOpMode{
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 2000, .2);
                     //pause to get block
-                    sleep(1200);
+                    sleep(1000);
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
                     //back up
