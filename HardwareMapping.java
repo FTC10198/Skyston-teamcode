@@ -181,7 +181,8 @@ public class HardwareMapping
         double frontLeftStart = frontLeftMotor.getCurrentPosition();
         double frontRightStart = frontRightMotor.getCurrentPosition();
 
-        double startingHeading = imu.readCurrentHeading();
+        //double startingHeading = imu.readCurrentHeading();
+        double startingHeading = 0;
 
         while (Math.sqrt(Math.pow((frontLeftMotor.getCurrentPosition() - frontLeftStart),2)+Math.pow((frontRightMotor.getCurrentPosition()-frontRightStart),2)) < driveDistance) {
 
@@ -245,6 +246,11 @@ public class HardwareMapping
             backLeftMotor.setPower(BackLeft);
             backRightMotor.setPower(BackRight);
         }
+
+        frontRightMotor.setPower(0);
+        frontLeftMotor.setPower(0);
+        backLeftMotor.setPower(0);
+        backRightMotor.setPower(0);
     }
 
     public void turnToAngle(double angleIn, double motorPower) {
@@ -295,4 +301,15 @@ public class HardwareMapping
             backRightMotor.setPower(RightX);
         }
     }
+
+    public void intake(boolean In){
+        if (In)  {
+            intakeRight.setPower(-1);
+            intakeLeft.setPower(1);
+        } else {
+            intakeRight.setPower(1);
+            intakeLeft.setPower(-1);
+        }
+    }
+
 }
