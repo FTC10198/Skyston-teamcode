@@ -27,7 +27,7 @@ public class LeftFartherBridgeAuton extends LinearOpMode{
             //drive forward
             robot.drive(0.2,0,0,3500);
             //drive left
-            robot.drive(0,0.2,0,1000);
+            robot.drive(0,0.2,0,1500);
         }
     }
 }

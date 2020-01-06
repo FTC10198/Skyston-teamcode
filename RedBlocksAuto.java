@@ -46,13 +46,13 @@ public class RedBlocksAuto extends LinearOpMode{
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 2200, .2);
                     //pause to get block
-                    sleep(1000);
+                    sleep(1200);
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
                     //back up
                     robot.driveAtDirection(180, 1000, .2);
                     //go right past the bridge
-                    robot.driveAtDirection(90, 2800, .2);
+                    robot.driveAtDirection(270, 2800, .2);
                     //drop off stone-reverse intake
                     sleep(1000);
                     robot.intakeRight.setPower(1);
@@ -87,9 +87,9 @@ public class RedBlocksAuto extends LinearOpMode{
                     //drive forward about 30" with intake on
                     robot.intakeRight.setPower(-1);
                     robot.intakeLeft.setPower(1);
-                    robot.driveAtDirection(0, 2000, .2);
+                    robot.driveAtDirection(0, 2200, .2);
                     //pause to get block
-                    sleep(1000);
+                    sleep(1200);
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
                     //back up
@@ -126,14 +126,14 @@ public class RedBlocksAuto extends LinearOpMode{
                     break;
 
                 case RIGHT:
-                    // move left
-                    robot.driveAtDirection(270, 200, .2);
+                    // move right
+                    robot.driveAtDirection(90, 200, .2);
                     //drive forward about 30" with intake on
                     robot.intakeRight.setPower(-1);
                     robot.intakeLeft.setPower(1);
-                    robot.driveAtDirection(0, 1800, .2);
+                    robot.driveAtDirection(0, 2000, .2);
                     //pause to get block
-                    sleep(1000);
+                    sleep(1200);
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
                     //back up
@@ -154,7 +154,7 @@ public class RedBlocksAuto extends LinearOpMode{
                     //drive forward with intake on
                     robot.intakeRight.setPower(-1);
                     robot.intakeLeft.setPower(1);
-                    robot.driveAtDirection(0, 300, .2);
+                    robot.driveAtDirection(0, 300, .2);.
                     //pause to get block
                     sleep(2000);
                     robot.intakeRight.setPower(0);

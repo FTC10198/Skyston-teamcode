@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.util.Range;
 public class BlueFoundationAuton extends LinearOpMode{
     private org.firstinspires.ftc.teamcode.HardwareMapping robot = new org.firstinspires.ftc.teamcode.HardwareMapping();
     @Override
-    public void runOpMode() {
+    public void runOpMode() throws InterruptedException {
         robot.init(hardwareMap);
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -44,10 +44,10 @@ public class BlueFoundationAuton extends LinearOpMode{
             //raise arms
             robot.leftArmServo.setPosition(1);
             robot.rightArmServo.setPosition(0);
-            //go left and park under bridge
+            // go forward and park under bridge
             sleep(2000);
 //            robot.drive(.3,0,0,4000);
-            robot.driveAtDirection(0, 1000, .2);
+            robot.driveAtDirectionMaintain(0, 1000, .2);
         }
     }
 }

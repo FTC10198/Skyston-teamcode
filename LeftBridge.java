@@ -25,7 +25,7 @@ public class LeftBridge extends LinearOpMode{
 
             //drive left
             sleep(23000);
-            robot.drive(0,0.2,0,500);
+            robot.drive(0,0.2,0,1000);
         }
     }
 }
