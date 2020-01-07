@@ -115,11 +115,11 @@ public class VuforiaStuff {
 
 
             if (red) {
-                cropStartX = (int) ((75.0 / 720.0) * bitmap.getWidth());
-                cropStartY = (int) ((200.0 / 480.0) * bitmap.getHeight());
+                cropStartX = (int) ((230.0 / 720.0) * bitmap.getWidth());
+                cropStartY = (int) ((180.0 / 480.0) * bitmap.getHeight());
                 // 450 and 720
-                cropWidth = (int) ((320.0 / 720.0) * bitmap.getWidth());
-                cropHeight = (int) ((100.0 / 480.0) * bitmap.getHeight());
+                cropWidth = (int) ((460.0 / 720.0) * bitmap.getWidth());
+                cropHeight = (int) ((120.0 / 480.0) * bitmap.getHeight());
             } else {
                 cropStartX = (int) ((160.0 / 1280.0) * bitmap.getWidth()); //was 320
                 cropStartY = (int) ((180.0 / 720.0) * bitmap.getHeight()); //was 360

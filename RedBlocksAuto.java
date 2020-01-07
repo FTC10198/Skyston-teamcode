@@ -33,26 +33,26 @@ public class RedBlocksAuto extends LinearOpMode{
         telemetry.update();
         if (opModeIsActive()) {
 // where the block is
-            pos = robot.vuforiaStuff.vuforiascan(true, false);
+            pos = robot.vuforiaStuff.vuforiascan(true, true);
             telemetry.addData("position",pos);
             telemetry.update();
 
             switch (pos) {
                 case LEFT:
                     //move left about a foot
-                    robot.driveAtDirection(270, 500, .2);
+                    robot.driveAtDirection(270, 500, .3);
                     //drive forward about 30" with intake on
                     robot.intakeRight.setPower(-1);
                     robot.intakeLeft.setPower(1);
-                    robot.driveAtDirection(0, 2200, .2);
+                    robot.driveAtDirection(0, 2200, .3);
                     //pause to get block
                     sleep(1200);
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
                     //back up
-                    robot.driveAtDirection(180, 1000, .2);
+                    robot.driveAtDirection(180, 1000, .3);
                     //go right past the bridge
-                    robot.driveAtDirection(270, 2800, .2);
+                    robot.driveAtDirection(90, 2800, .3);
                     //drop off stone-reverse intake
                     sleep(1000);
                     robot.intakeRight.setPower(1);
@@ -78,24 +78,24 @@ public class RedBlocksAuto extends LinearOpMode{
                         robot.intakeLeft.setPower(-1);
                         sleep(2000);*/
                     //park
-                    robot.driveAtDirection(270, 600, .2);
+                    robot.driveAtDirection(270, 600, .3);
                     break;
 
                 case CENTER:
                     //move left to align with stone
-                    robot.driveAtDirection(270, 100, .2);
+                    robot.driveAtDirection(270, 200, .3);
                     //drive forward about 30" with intake on
                     robot.intakeRight.setPower(-1);
                     robot.intakeLeft.setPower(1);
-                    robot.driveAtDirection(0, 2200, .2);
+                    robot.driveAtDirection(0, 2400, .3);
                     //pause to get block
-                    sleep(1200);
+                    sleep(975);
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
                     //back up
-                    robot.driveAtDirection(180, 900, .2);
+                    robot.driveAtDirection(180, 950, .3);
                     //go right past the bridge
-                    robot.driveAtDirection(90, 2300, .2);
+                    robot.driveAtDirection(90, 2500, .3);
                     //drop off stone-reverse intake
                     sleep(1000);
                     robot.intakeRight.setPower(1);
@@ -105,8 +105,8 @@ public class RedBlocksAuto extends LinearOpMode{
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
 
-                    //go right, touching side wall
-                    /*//drive forward with intake on
+                    /*//go right, touching side wall
+                    //drive forward with intake on
                     robot.intakeRight.setPower(-1);
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 300, .2);
@@ -119,55 +119,54 @@ public class RedBlocksAuto extends LinearOpMode{
                     //same but longer by 8" than left
                     //block out
                     robot.intakeRight.setPower(1);
-                    robot.intakeLeft.setPower(-1);
-                   */
+                    robot.intakeLeft.setPower(-1);*/
                     //park
-                    robot.driveAtDirection(270, 600, .2);
+                    robot.driveAtDirection(270, 700, .3);
                     break;
 
                 case RIGHT:
                     // move right
-                    robot.driveAtDirection(90, 200, .2);
+                    robot.driveAtDirection(90, 200, .3);
                     //drive forward about 30" with intake on
                     robot.intakeRight.setPower(-1);
                     robot.intakeLeft.setPower(1);
-                    robot.driveAtDirection(0, 2000, .2);
+                    robot.driveAtDirection(0, 2000, .3);
                     //pause to get block
                     sleep(1200);
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
                     //back up
-                    robot.driveAtDirection(180, 900, .2);
+                    robot.driveAtDirection(180, 900, .3);
                     //move past right bridge
-                    robot.driveAtDirection(90, 1800, .2);
+                    robot.driveAtDirection(90, 1800, .3);
                     //drop off stone-reverse intake
                     sleep(1000);
                     robot.intakeRight.setPower(1);
                     robot.intakeLeft.setPower(-1);
                     sleep(2000);
 
-                   /* //stop intake
+                    //stop intake
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
-                    //go right until lined up with second stone
-                    robot.driveAtDirection(90, 2000, .2);
+                    //go left until lined up with second stone
+                    robot.driveAtDirection(270, 3400, .3);
                     //drive forward with intake on
                     robot.intakeRight.setPower(-1);
                     robot.intakeLeft.setPower(1);
-                    robot.driveAtDirection(0, 300, .2);.
+                    robot.driveAtDirection(0, 900, .3);
                     //pause to get block
-                    sleep(2000);
+                    sleep(1000);
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
                     //back up
-                    robot.driveAtDirection(180, 300, .2);
-                    //go left past bridge
-                    robot.driveAtDirection(270, 3000, .2);
+                    robot.driveAtDirection(180, 900, .3);
+                    //go right past bridge
+                    robot.driveAtDirection(90, 3400, .3);
                     //block out
                     robot.intakeRight.setPower(1);
-                    robot.intakeLeft.setPower(-1);*/
+                    robot.intakeLeft.setPower(-1);
                     //park
-                    robot.driveAtDirection(270, 600, .2);
+                    robot.driveAtDirection(270, 600, .3);
                     break;
 
 
