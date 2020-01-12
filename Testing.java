@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
+import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 
@@ -28,6 +30,9 @@ public class Testing extends LinearOpMode {
         telemetry.update();
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
+
+        boolean buttonPressed = false;
+
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
             // left stick controls direction
@@ -66,13 +71,13 @@ public class Testing extends LinearOpMode {
             /*
              * Telemetry for debugging
              */
-            telemetry.addData("Text", "*** Robot Data***");
-            telemetry.addData("Joy XL YL XR", String.format("%.2f", gamepad1LeftX) + " " +
-                    String.format("%.2f", gamepad1LeftY) + " " + String.format("%.2f", gamepad1RightX));
-            telemetry.addData("f left pwr", "front left  pwr: " + String.format("%.2f", FrontLeft));
-            telemetry.addData("f right pwr", "front right pwr: " + String.format("%.2f", FrontRight));
-            telemetry.addData("b right pwr", "back right pwr: " + String.format("%.2f", BackRight));
-            telemetry.addData("b left pwr", "back left pwr: " + String.format("%.2f", BackLeft));
+//            telemetry.addData("Text", "*** Robot Data***");
+//            telemetry.addData("Joy XL YL XR", String.format("%.2f", gamepad1LeftX) + " " +
+//                    String.format("%.2f", gamepad1LeftY) + " " + String.format("%.2f", gamepad1RightX));
+//            telemetry.addData("f left pwr", "front left  pwr: " + String.format("%.2f", FrontLeft));
+//            telemetry.addData("f right pwr", "front right pwr: " + String.format("%.2f", FrontRight));
+//            telemetry.addData("b right pwr", "back right pwr: " + String.format("%.2f", BackRight));
+//            telemetry.addData("b left pwr", "back left pwr: " + String.format("%.2f", BackLeft));
 
             //double intakeLeftPower = robot.intakeLeft.getPower();
             //double intakeRightPower = robot.intakeRight.getPower();
@@ -147,10 +152,22 @@ public class Testing extends LinearOpMode {
             } else if (gamepad1.y) {
                 robot.driveAtDirection(270, 650, .2);
             }
+            ElapsedTime runtime2 = new ElapsedTime();
+            runtime2.reset();
 
-        }
+            {
+                if (robot.touchSensor.getState() == true) {
+                    telemetry.addData("Digital Touch", "Is Not Pressed");
+                } else {
+                    telemetry.addData("Digital Touch", "Is Pressed");
+                    buttonPressed = true;
+                }
+            }
 
+            telemetry.addData("Button2", buttonPressed);
             telemetry.addData("Status", "Running");
             telemetry.update();
         }
+        }
+
     }

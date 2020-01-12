@@ -35,10 +35,11 @@ public class HardwareMapping
     public CRServo    gateServo  = null;
     public VuforiaStuff vuforiaStuff;
     private VuforiaLocalizer vuforia;
-    public DigitalChannel touchSensor  = null;
+    DigitalChannel touchSensor ;
     private static final String VUFORIA_KEY = "ATOlfJr/////AAABmUTNuojv10IyojJgb1ipUl5AFc9IdiMS/PX55ILLnxS3ZPIjWu/kKu4fRsmZnfgrOfXcXnYyoPbHFCQOiBSJR1y2voTvDBlVWM1Lq2YNVgaOBT5g+00yR9u7kHuOxaCouUCcQUjbu2T3CFsTeLzk5snuYDnpkERDb//651aurmTW+dlNlmHFiP6P5h2co6MZQNfSQc1/fVKM7bS7STDCsX1Ro4Nyj0rfTVCp8kK/rHzsyZ8JcZ1EvYz746d0Ma6z9+MCoZ7EGHw9XdK3dW3sYlXVXTLGMDVEbqAnfqlfnh7C67SGrpkytPabcbVWAilptCGmzykRg7rZt6HlS/qM10diikwTZL9aIyvZZFIY3yWf";
 
     public IMU imu;
+
     //public DigitalChannel digitalTouch = null;
     //public DistanceSensor sensorColorRange = null;
 
@@ -85,6 +86,9 @@ public class HardwareMapping
         clampServo  = hwMap.get(Servo.class, "clampServo");
         gateServo  = hwMap.get(CRServo.class, "gateServo");
         touchSensor = hwMap.get(DigitalChannel.class, "touchSensor");
+
+        // set the digital channel to input.
+        touchSensor.setMode(DigitalChannel.Mode.INPUT);
 
 
 
