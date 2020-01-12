@@ -32,7 +32,7 @@ public class BlueBlocksAuto extends LinearOpMode{
             pos = robot.vuforiaStuff.vuforiascan(true, false);
             telemetry.addData("position",pos);
             telemetry.update();
-
+            ElapsedTime runtime2 = new ElapsedTime();
             switch (pos) {
                 case LEFT:
                     // move left about 6" to align with left stone
@@ -42,9 +42,16 @@ public class BlueBlocksAuto extends LinearOpMode{
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 1800, .2);
                     //pause to get block
-                    sleep(1000);
-                    robot.intakeRight.setPower(0);
-                    robot.intakeLeft.setPower(0);
+                    runtime2.reset();
+                    while (runtime2.milliseconds() < 1200) {
+                        if (robot.touchSensor.getState() == true) {
+                            telemetry.addData("Digital Touch", "Is Not Pressed");
+                        } else {
+                            telemetry.addData("Digital Touch", "Is Pressed");
+                            robot.intakeRight.setPower(0);
+                            robot.intakeLeft.setPower(0);
+                        }
+                    }
                     //back up
                     robot.driveAtDirection(180, 900, .2);
                     //move past left bridge
@@ -54,7 +61,6 @@ public class BlueBlocksAuto extends LinearOpMode{
                     robot.intakeRight.setPower(1);
                     robot.intakeLeft.setPower(-1);
                     sleep(2000);
-
                     //stop intake
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
@@ -65,9 +71,16 @@ public class BlueBlocksAuto extends LinearOpMode{
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 900, .2);
                     //pause to get block
-                    sleep(2000);
-                    robot.intakeRight.setPower(0);
-                    robot.intakeLeft.setPower(0);
+                    runtime2.reset();
+                    while (runtime2.milliseconds() < 1200) {
+                        if (robot.touchSensor.getState() == true) {
+                            telemetry.addData("Digital Touch", "Is Not Pressed");
+                        } else {
+                            telemetry.addData("Digital Touch", "Is Pressed");
+                            robot.intakeRight.setPower(0);
+                            robot.intakeLeft.setPower(0);
+                        }
+                    }
                     //back up
                     robot.driveAtDirection(180, 900, .2);
                     //go left past bridge
@@ -87,9 +100,16 @@ public class BlueBlocksAuto extends LinearOpMode{
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 2000, .2);
                     //pause to get block
-                    sleep(1000);
-                    robot.intakeRight.setPower(0);
-                    robot.intakeLeft.setPower(0);
+                    runtime2.reset();
+                    while (runtime2.milliseconds() < 1200) {
+                        if (robot.touchSensor.getState() == true) {
+                            telemetry.addData("Digital Touch", "Is Not Pressed");
+                        } else {
+                            telemetry.addData("Digital Touch", "Is Pressed");
+                            robot.intakeRight.setPower(0);
+                            robot.intakeLeft.setPower(0);
+                        }
+                    }
                     //back up
                     robot.driveAtDirection(180, 900, .2);
                     //same, but longer by 8" than left
@@ -109,9 +129,16 @@ public class BlueBlocksAuto extends LinearOpMode{
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 300, .2);
                     //pause to get block
-                    sleep(2000);
-                    robot.intakeRight.setPower(0);
-                    robot.intakeLeft.setPower(0);
+                    runtime2.reset();
+                    while (runtime2.milliseconds() < 1200) {
+                        if (robot.touchSensor.getState() == true) {
+                            telemetry.addData("Digital Touch", "Is Not Pressed");
+                        } else {
+                            telemetry.addData("Digital Touch", "Is Pressed");
+                            robot.intakeRight.setPower(0);
+                            robot.intakeLeft.setPower(0);
+                        }
+                    }
                     //back up
                     robot.driveAtDirection(180, 300, .2);
                     //same but longer by 8" than left
@@ -131,9 +158,16 @@ public class BlueBlocksAuto extends LinearOpMode{
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 2200, .2);
                     //pause to get block
-                    sleep(1000);
-                    robot.intakeRight.setPower(0);
-                    robot.intakeLeft.setPower(0);
+                    runtime2.reset();
+                    while (runtime2.milliseconds() < 1200) {
+                        if (robot.touchSensor.getState() == true) {
+                            telemetry.addData("Digital Touch", "Is Not Pressed");
+                        } else {
+                            telemetry.addData("Digital Touch", "Is Pressed");
+                            robot.intakeRight.setPower(0);
+                            robot.intakeLeft.setPower(0);
+                        }
+                    }
                     //back up
                     robot.driveAtDirection(180, 1000, .2);
                     //same, but longer by 16" than left
@@ -151,9 +185,17 @@ public class BlueBlocksAuto extends LinearOpMode{
                     robot.intakeRight.setPower(-1);
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 300, .2);
-                    sleep(1200);
-                    robot.intakeRight.setPower(0);
-                    robot.intakeLeft.setPower(0);
+                    //pause to get block
+                    runtime2.reset();
+                    while (runtime2.milliseconds() < 1200) {
+                        if (robot.touchSensor.getState() == true) {
+                            telemetry.addData("Digital Touch", "Is Not Pressed");
+                        } else {
+                            telemetry.addData("Digital Touch", "Is Pressed");
+                            robot.intakeRight.setPower(0);
+                            robot.intakeLeft.setPower(0);
+                        }
+                    }
                     //back up
                     robot.driveAtDirection(180, 900, .2);
                     // rotate 45 degrees to the left

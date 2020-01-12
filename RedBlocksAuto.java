@@ -36,7 +36,7 @@ public class RedBlocksAuto extends LinearOpMode{
             pos = robot.vuforiaStuff.vuforiascan(true, true);
             telemetry.addData("position",pos);
             telemetry.update();
-
+            ElapsedTime runtime2 = new ElapsedTime();
             switch (pos) {
                 case LEFT:
                     //move left about a foot
@@ -46,9 +46,16 @@ public class RedBlocksAuto extends LinearOpMode{
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 2200, .3);
                     //pause to get block
-                    sleep(1200);
-                    robot.intakeRight.setPower(0);
-                    robot.intakeLeft.setPower(0);
+                    runtime2.reset();
+                    while (runtime2.milliseconds() < 1200) {
+                        if (robot.touchSensor.getState() == true) {
+                            telemetry.addData("Digital Touch", "Is Not Pressed");
+                        } else {
+                            telemetry.addData("Digital Touch", "Is Pressed");
+                            robot.intakeRight.setPower(0);
+                            robot.intakeLeft.setPower(0);
+                        }
+                    }
                     //back up
                     robot.driveAtDirection(180, 1000, .3);
                     //go right past the bridge
@@ -58,6 +65,8 @@ public class RedBlocksAuto extends LinearOpMode{
                     robot.intakeRight.setPower(1);
                     robot.intakeLeft.setPower(-1);
                     sleep(2000);
+
+
                     // go left until 1" from wall
                     robot.driveAtDirection(270, 3000, .3);
                     //rotate 45 degrees to the left
@@ -66,9 +75,16 @@ public class RedBlocksAuto extends LinearOpMode{
                     robot.intakeRight.setPower(-1);
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 2200, .2);
-                    sleep(1200);
-                    robot.intakeRight.setPower(0);
-                    robot.intakeLeft.setPower(0);
+                    //pause to get block
+                    while (runtime2.milliseconds() < 1200) {
+                        if (robot.touchSensor.getState() == true) {
+                            telemetry.addData("Digital Touch", "Is Not Pressed");
+                        } else {
+                            telemetry.addData("Digital Touch", "Is Pressed");
+                            robot.intakeRight.setPower(0);
+                            robot.intakeLeft.setPower(0);
+                        }
+                    }
                     //back up
                     robot.driveAtDirection(180, 900, .2);
                     // rotate 45 degrees to the right
@@ -92,9 +108,16 @@ public class RedBlocksAuto extends LinearOpMode{
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 2400, .3);
                     //pause to get block
-                    sleep(975);
-                    robot.intakeRight.setPower(0);
-                    robot.intakeLeft.setPower(0);
+                    runtime2.reset();
+                    while (runtime2.milliseconds() < 1200) {
+                        if (robot.touchSensor.getState() == true) {
+                            telemetry.addData("Digital Touch", "Is Not Pressed");
+                        } else {
+                            telemetry.addData("Digital Touch", "Is Pressed");
+                            robot.intakeRight.setPower(0);
+                            robot.intakeLeft.setPower(0);
+                        }
+                    }
                     //back up
                     robot.driveAtDirection(180, 950, .3);
                     //go right past the bridge
@@ -107,6 +130,8 @@ public class RedBlocksAuto extends LinearOpMode{
                     //stop intake
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
+
+
                     //go left, touching side wall
                     robot.driveAtDirection(270, 3000, .3);
                     //drive forward with intake on
@@ -114,9 +139,15 @@ public class RedBlocksAuto extends LinearOpMode{
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 2400, .2);
                     //pause to get block
-                    sleep(2000);
-                    robot.intakeRight.setPower(0);
-                    robot.intakeLeft.setPower(0);
+                    while (runtime2.milliseconds() < 1200) {
+                        if (robot.touchSensor.getState() == true) {
+                            telemetry.addData("Digital Touch", "Is Not Pressed");
+                        } else {
+                            telemetry.addData("Digital Touch", "Is Pressed");
+                            robot.intakeRight.setPower(0);
+                            robot.intakeLeft.setPower(0);
+                        }
+                    }
                     //back up
                     robot.driveAtDirection(180, 950, .2);
                     //go right past bridge
@@ -136,9 +167,16 @@ public class RedBlocksAuto extends LinearOpMode{
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 2000, .3);
                     //pause to get block
-                    sleep(1200);
-                    robot.intakeRight.setPower(0);
-                    robot.intakeLeft.setPower(0);
+                    runtime2.reset();
+                    while (runtime2.milliseconds() < 1200) {
+                        if (robot.touchSensor.getState() == true) {
+                            telemetry.addData("Digital Touch", "Is Not Pressed");
+                        } else {
+                            telemetry.addData("Digital Touch", "Is Pressed");
+                            robot.intakeRight.setPower(0);
+                            robot.intakeLeft.setPower(0);
+                        }
+                    }
                     //back up
                     robot.driveAtDirection(180, 900, .3);
                     //move past right bridge
@@ -148,6 +186,7 @@ public class RedBlocksAuto extends LinearOpMode{
                     robot.intakeRight.setPower(1);
                     robot.intakeLeft.setPower(-1);
                     sleep(2000);
+
 
                     //stop intake
                     robot.intakeRight.setPower(0);
@@ -159,9 +198,15 @@ public class RedBlocksAuto extends LinearOpMode{
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 900, .3);
                     //pause to get block
-                    sleep(1000);
-                    robot.intakeRight.setPower(0);
-                    robot.intakeLeft.setPower(0);
+                    while (runtime2.milliseconds() < 1200) {
+                        if (robot.touchSensor.getState() == true) {
+                            telemetry.addData("Digital Touch", "Is Not Pressed");
+                        } else {
+                            telemetry.addData("Digital Touch", "Is Pressed");
+                            robot.intakeRight.setPower(0);
+                            robot.intakeLeft.setPower(0);
+                        }
+                    }
                     //back up
                     robot.driveAtDirection(180, 900, .3);
                     //go right past bridge
