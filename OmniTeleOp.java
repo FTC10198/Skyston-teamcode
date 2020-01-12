@@ -34,7 +34,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 public class OmniTeleOp extends LinearOpMode {
     private org.firstinspires.ftc.teamcode.HardwareMapping robot = new org.firstinspires.ftc.teamcode.HardwareMapping();
 
-
+    VuforiaStuff.skystonePos pos;
     @Override
     public void runOpMode() {
         robot.init(hardwareMap);
@@ -43,7 +43,7 @@ public class OmniTeleOp extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         // run until the end of the match (driver presses STOP)
-
+        pos = robot.vuforiaStuff.vuforiascan(false, false);
         double slow = 1;
 
         while (opModeIsActive()) {
