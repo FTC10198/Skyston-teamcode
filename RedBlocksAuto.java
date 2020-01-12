@@ -58,25 +58,28 @@ public class RedBlocksAuto extends LinearOpMode{
                     robot.intakeRight.setPower(1);
                     robot.intakeLeft.setPower(-1);
                     sleep(2000);
-                    // go right until 1" from wall
-                    //rotate 45 degrees to the right
+                    // go left until 1" from wall
+                    robot.driveAtDirection(270, 3000, .3);
+                    //rotate 45 degrees to the left
+                    robot.turnToAngle(315, .3);
                     //drive forward with intake on
-                    /*robot.intakeRight.setPower(-1);
+                    robot.intakeRight.setPower(-1);
                     robot.intakeLeft.setPower(1);
-                    robot.driveAtDirection(0, 300, .2);
+                    robot.driveAtDirection(0, 2200, .2);
                     sleep(1200);
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
                     //back up
                     robot.driveAtDirection(180, 900, .2);
-                    // rotate 45 degrees to the left
+                    // rotate 45 degrees to the right
+                    robot.turnToAngle(0, .3);
                     // go left past bridge
                     robot.driveAtDirection(270, 3000, .2);
                     //block out
-                        sleep(1000);
-                        robot.intakeRight.setPower(1);
-                        robot.intakeLeft.setPower(-1);
-                        sleep(2000);*/
+                    sleep(1000);
+                    robot.intakeRight.setPower(1);
+                    robot.intakeLeft.setPower(-1);
+                    sleep(2000);
                     //park
                     robot.driveAtDirection(270, 600, .3);
                     break;
@@ -104,22 +107,23 @@ public class RedBlocksAuto extends LinearOpMode{
                     //stop intake
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
-
-                    /*//go right, touching side wall
+                    //go left, touching side wall
+                    robot.driveAtDirection(270, 3000, .3);
                     //drive forward with intake on
                     robot.intakeRight.setPower(-1);
                     robot.intakeLeft.setPower(1);
-                    robot.driveAtDirection(0, 300, .2);
+                    robot.driveAtDirection(0, 2400, .2);
                     //pause to get block
                     sleep(2000);
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
                     //back up
-                    robot.driveAtDirection(180, 300, .2);
-                    //same but longer by 8" than left
+                    robot.driveAtDirection(180, 950, .2);
+                    //go right past bridge
+                    robot.driveAtDirection(90, 3000, .3);
                     //block out
                     robot.intakeRight.setPower(1);
-                    robot.intakeLeft.setPower(-1);*/
+                    robot.intakeLeft.setPower(-1);
                     //park
                     robot.driveAtDirection(270, 700, .3);
                     break;

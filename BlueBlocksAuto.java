@@ -55,26 +55,26 @@ public class BlueBlocksAuto extends LinearOpMode{
                     robot.intakeLeft.setPower(-1);
                     sleep(2000);
 
-                   /* //stop intake
+                    //stop intake
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
                     //go right until lined up with second stone
-                    robot.driveAtDirection(90, 2000, .2);
+                    robot.driveAtDirection(90, 2200, .2);
                     //drive forward with intake on
                     robot.intakeRight.setPower(-1);
                     robot.intakeLeft.setPower(1);
-                    robot.driveAtDirection(0, 300, .2);
+                    robot.driveAtDirection(0, 900, .2);
                     //pause to get block
                     sleep(2000);
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
                     //back up
-                    robot.driveAtDirection(180, 300, .2);
+                    robot.driveAtDirection(180, 900, .2);
                     //go left past bridge
                     robot.driveAtDirection(270, 3000, .2);
                     //block out
                     robot.intakeRight.setPower(1);
-                    robot.intakeLeft.setPower(-1);*/
+                    robot.intakeLeft.setPower(-1);
                     //park
                     robot.driveAtDirection(90, 600, .2);
                     break;
@@ -102,9 +102,9 @@ public class BlueBlocksAuto extends LinearOpMode{
                     //stop intake
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
-
                     //go right, touching side wall
-                    /*//drive forward with intake on
+                    robot.driveAtDirection(90, 2500, .3);
+                    //drive forward with intake on
                     robot.intakeRight.setPower(-1);
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 300, .2);
@@ -115,10 +115,10 @@ public class BlueBlocksAuto extends LinearOpMode{
                     //back up
                     robot.driveAtDirection(180, 300, .2);
                     //same but longer by 8" than left
+                    robot.driveAtDirection(270, 2500, .3);
                     //block out
                     robot.intakeRight.setPower(1);
                     robot.intakeLeft.setPower(-1);
-                   */
                     //park
                     robot.driveAtDirection(90, 600, .2);
                     break;
@@ -139,14 +139,16 @@ public class BlueBlocksAuto extends LinearOpMode{
                     //same, but longer by 16" than left
                     robot.driveAtDirection(270, 2800, .2);
                     //drop off stone-reverse intake
-                        sleep(1000);
-                        robot.intakeRight.setPower(1);
-                        robot.intakeLeft.setPower(-1);
-                        sleep(2000);
+                    sleep(1000);
+                    robot.intakeRight.setPower(1);
+                    robot.intakeLeft.setPower(-1);
+                    sleep(2000);
                     // go right until 1" from wall
+                    robot.driveAtDirection(90, 3000, .3);
                     //rotate 45 degrees to the right
+                    robot.turnToAngle(45, .3);
                     //drive forward with intake on
-                    /*robot.intakeRight.setPower(-1);
+                    robot.intakeRight.setPower(-1);
                     robot.intakeLeft.setPower(1);
                     robot.driveAtDirection(0, 300, .2);
                     sleep(1200);
@@ -158,10 +160,10 @@ public class BlueBlocksAuto extends LinearOpMode{
                     // go left past bridge
                     robot.driveAtDirection(270, 3000, .2);
                     //block out
-                        sleep(1000);
-                        robot.intakeRight.setPower(1);
-                        robot.intakeLeft.setPower(-1);
-                        sleep(2000);*/
+                    sleep(1000);
+                    robot.intakeRight.setPower(1);
+                    robot.intakeLeft.setPower(-1);
+                    sleep(2000);
                     //park
                     robot.driveAtDirection(90, 600, .2);
                     break;
