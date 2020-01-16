@@ -256,5 +256,6 @@ public class VuforiaStuff {
 //        DbgLog.msg("black/yellow R: " + blackCountR + "/" + yellowCountR);
 
         return pos;
+
     }
 }

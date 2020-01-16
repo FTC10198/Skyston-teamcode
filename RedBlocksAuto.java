@@ -56,6 +56,8 @@ public class RedBlocksAuto extends LinearOpMode{
                             robot.intakeLeft.setPower(0);
                         }
                     }
+                    robot.intakeRight.setPower(0);
+                    robot.intakeLeft.setPower(0);
                     //back up
                     robot.driveAtDirection(180, 1000, .3);
                     //go right past the bridge
@@ -85,6 +87,8 @@ public class RedBlocksAuto extends LinearOpMode{
                             robot.intakeLeft.setPower(0);
                         }
                     }
+                    robot.intakeRight.setPower(0);
+                    robot.intakeLeft.setPower(0);
                     //back up
                     robot.driveAtDirection(180, 900, .2);
                     // rotate 45 degrees to the right
@@ -118,6 +122,8 @@ public class RedBlocksAuto extends LinearOpMode{
                             robot.intakeLeft.setPower(0);
                         }
                     }
+                    robot.intakeRight.setPower(0);
+                    robot.intakeLeft.setPower(0);
                     //back up
                     robot.driveAtDirection(180, 950, .3);
                     //go right past the bridge
@@ -148,6 +154,8 @@ public class RedBlocksAuto extends LinearOpMode{
                             robot.intakeLeft.setPower(0);
                         }
                     }
+                    robot.intakeRight.setPower(0);
+                    robot.intakeLeft.setPower(0);
                     //back up
                     robot.driveAtDirection(180, 950, .2);
                     //go right past bridge
@@ -177,8 +185,10 @@ public class RedBlocksAuto extends LinearOpMode{
                             robot.intakeLeft.setPower(0);
                         }
                     }
+                    robot.intakeRight.setPower(0);
+                    robot.intakeLeft.setPower(0);
                     //back up
-                    robot.driveAtDirection(180, 900, .3);
+                    robot.driveAtDirection(180, 700, .3);
                     //move past right bridge
                     robot.driveAtDirection(90, 1800, .3);
                     //drop off stone-reverse intake
@@ -192,11 +202,11 @@ public class RedBlocksAuto extends LinearOpMode{
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
                     //go left until lined up with second stone
-                    robot.driveAtDirection(270, 3400, .3);
+                    robot.driveAtDirection(270, 3000, .3);
                     //drive forward with intake on
                     robot.intakeRight.setPower(-1);
                     robot.intakeLeft.setPower(1);
-                    robot.driveAtDirection(0, 900, .3);
+                    robot.driveAtDirection(0, 1100, .3);
                     //pause to get block
                     while (runtime2.milliseconds() < 1200) {
                         if (robot.touchSensor.getState() == true) {
@@ -207,15 +217,17 @@ public class RedBlocksAuto extends LinearOpMode{
                             robot.intakeLeft.setPower(0);
                         }
                     }
+                    robot.intakeRight.setPower(0);
+                    robot.intakeLeft.setPower(0);
                     //back up
-                    robot.driveAtDirection(180, 900, .3);
+                    robot.driveAtDirection(180, 700, .3);
                     //go right past bridge
                     robot.driveAtDirection(90, 3400, .3);
                     //block out
                     robot.intakeRight.setPower(1);
                     robot.intakeLeft.setPower(-1);
                     //park
-                    robot.driveAtDirection(270, 600, .3);
+                    robot.driveAtDirection(270, 700, .3);
                     break;
 
 
