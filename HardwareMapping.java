@@ -340,6 +340,84 @@ public class HardwareMapping
         backRightMotor.setPower(0);
     }
 
+    public void driveAtDirectionNoGyro(double AngleInM, double driveDistanceM, double motorPowerM) {
+        double LeftYMotorFix = -1;
+        double LeftXMotorFix = -1;
+        double RightXMotorFix = -1;
+
+        double frontLeftStart = frontLeftMotor.getCurrentPosition();
+        double frontRightStart = frontRightMotor.getCurrentPosition();
+
+        double startingHeading = imu.readCurrentHeading();
+
+        while (Math.sqrt(Math.pow((frontLeftMotor.getCurrentPosition() - frontLeftStart),2)+Math.pow((frontRightMotor.getCurrentPosition()-frontRightStart),2)) < driveDistanceM) {
+
+            double LeftY;
+            double LeftX;
+            double RightX = 0;
+
+            LeftX = Math.sin(Math.toRadians(AngleInM))*LeftXMotorFix*motorPowerM;
+            LeftY = Math.cos(Math.toRadians(AngleInM))*LeftYMotorFix*motorPowerM;
+
+            double correctionPower = 0;
+            /*if (Math.abs(imu.readCurrentHeading()-startingHeading)<.2){
+//                correctionPower = 0;
+                correctionPower = 0;
+            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<1) {
+//                correctionPower = 0.005;
+                correctionPower = motorPowerM*.15;
+            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<2.5) {
+//                correctionPower = 0.01;
+                correctionPower = motorPowerM*.2;
+            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<5) {
+//                correctionPower = 0.015;
+                correctionPower = motorPowerM*.25;
+            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<10) {
+//                correctionPower = 0.02;
+                correctionPower = motorPowerM*.3;
+            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<15) {
+//                correctionPower = 0.03;
+                correctionPower = motorPowerM*.35;
+            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)<20) {
+//                correctionPower = 0.04;
+                correctionPower = motorPowerM*.4;
+            }else if (Math.abs(imu.readCurrentHeading()-startingHeading)>=20) {
+//                correctionPower = 0.05;
+                correctionPower = motorPowerM*.45;
+            }
+
+
+            if (startingHeading > imu.readCurrentHeading()){
+                RightX = -correctionPower*RightXMotorFix;
+            }else if (startingHeading < imu.readCurrentHeading()){
+                RightX = correctionPower*RightXMotorFix;
+            }else if (startingHeading == imu.readCurrentHeading()){
+                RightX = 0;
+            }*/
+
+            double FrontLeftPrep = -LeftY - LeftX - RightX;
+            double FrontRightPrep = LeftY - LeftX - RightX;
+            double BackRightPrep = LeftY + LeftX - RightX;
+            double BackLeftPrep = -LeftY + LeftX - RightX;
+
+            // clip the right/left values so that the values never exceed +/- 1
+            double FrontRight = Range.clip(FrontRightPrep, -1, 1);
+            double FrontLeft = Range.clip(FrontLeftPrep, -1, 1);
+            double BackLeft = Range.clip(BackLeftPrep, -1, 1);
+            double BackRight = Range.clip(BackRightPrep, -1, 1);
+
+            // write the values to the motors
+            frontRightMotor.setPower(FrontRight);
+            frontLeftMotor.setPower(FrontLeft);
+            backLeftMotor.setPower(BackLeft);
+            backRightMotor.setPower(BackRight);
+        }
+
+        frontRightMotor.setPower(0);
+        frontLeftMotor.setPower(0);
+        backLeftMotor.setPower(0);
+        backRightMotor.setPower(0);
+    }
 
     public void turnToAngle(double angleIn, double motorPower) {
         double RightX = 0;
