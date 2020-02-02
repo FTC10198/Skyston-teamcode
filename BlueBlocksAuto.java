@@ -90,9 +90,9 @@ public class BlueBlocksAuto extends LinearOpMode{
                     //go left past bridge
                     robot.driveAtDirection(270, 3200, .3);
                     //block out
-                    sleep(1000);
                     robot.intakeRight.setPower(1);
                     robot.intakeLeft.setPower(-1);
+                    sleep(1000);
                     //park
                     robot.driveAtDirection(90, 600, .3);
                     break;
@@ -153,10 +153,10 @@ public class BlueBlocksAuto extends LinearOpMode{
                     //same but longer by 8" than left
                     robot.driveAtDirection(270, 3500, .3);
                     //block out
-                    sleep(1000);
+
                     robot.intakeRight.setPower(1);
                     robot.intakeLeft.setPower(-1);
-                    sleep(2000);
+                    sleep(1000);
                     //park
                     robot.driveAtDirection(90, 600, .3);
                     break;
@@ -251,10 +251,11 @@ public class BlueBlocksAuto extends LinearOpMode{
                      //same but longer by 8" than left
                      robot.driveAtDirection(270, 3500, .3);
                      //block out
-                     sleep(1000);
+
                      robot.intakeRight.setPower(1);
                      robot.intakeLeft.setPower(-1);
-                     sleep(2000);
+                     sleep(1000);
+
                     //park
                     robot.driveAtDirection(90, 600, .3);
                     break;

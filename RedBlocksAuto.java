@@ -66,7 +66,6 @@ public class RedBlocksAuto extends LinearOpMode{
                     sleep(1000);
                     robot.intakeRight.setPower(1);
                     robot.intakeLeft.setPower(-1);
-                    sleep(1500);
 
 
                     /*// go left until 1" from wall
@@ -131,6 +130,7 @@ public class RedBlocksAuto extends LinearOpMode{
                     //block out
                     robot.intakeRight.setPower(1);
                     robot.intakeLeft.setPower(-1);
+                    sleep(1000);
                     //park
                     robot.driveAtDirection(270, 600, .3);
                     break;
@@ -160,10 +160,9 @@ public class RedBlocksAuto extends LinearOpMode{
                     //go right past the bridge
                     robot.driveAtDirection(85, 2500, .3);
                     //drop off stone-reverse intake
-                    sleep(1000);
                     robot.intakeRight.setPower(1);
                     robot.intakeLeft.setPower(-1);
-                    sleep(1500);
+                    sleep(1000);
                     //stop intake
                     robot.intakeRight.setPower(0);
                     robot.intakeLeft.setPower(0);
@@ -194,6 +193,7 @@ public class RedBlocksAuto extends LinearOpMode{
                     //block out
                     robot.intakeRight.setPower(1);
                     robot.intakeLeft.setPower(-1);
+                    sleep(1000);
                     //park
                     robot.driveAtDirection(270, 600, .3);
                     break;
@@ -257,6 +257,7 @@ public class RedBlocksAuto extends LinearOpMode{
                     //block out
                     robot.intakeRight.setPower(1);
                     robot.intakeLeft.setPower(-1);
+                    sleep(1000);
                     //park
                     robot.driveAtDirection(270, 800, .3);
                     break;

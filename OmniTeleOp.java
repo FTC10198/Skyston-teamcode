@@ -35,6 +35,7 @@ public class OmniTeleOp extends LinearOpMode {
     private org.firstinspires.ftc.teamcode.HardwareMapping robot = new org.firstinspires.ftc.teamcode.HardwareMapping();
 
     VuforiaStuff.skystonePos pos;
+
     @Override
     public void runOpMode() {
         robot.init(hardwareMap);
@@ -50,7 +51,7 @@ public class OmniTeleOp extends LinearOpMode {
             // left stick controls direction
             // right stick X controls rotation
 
-            double gamepad1LeftY = gamepad1.left_stick_y * slow;
+            double gamepad1LeftY = (gamepad1.left_stick_y) * slow;
             double gamepad1LeftX = -gamepad1.left_stick_x * slow;
             double gamepad1RightX = -gamepad1.right_stick_x * .7 * slow;
 
@@ -202,22 +203,22 @@ public class OmniTeleOp extends LinearOpMode {
                 robot.gateServo.setPower(-.2);
                 sleep(500);
                 robot.gateServo.setPower(0);
-            }
-
-           /* if  (gamepad1.a) {
+            } else if (gamepad1.x) {
                 if (slow == 1) {
-                    slow = .3;
-                } else if (slow == .3) {
+                    slow = .6;
+                } else if (slow == .6) {
                     slow = 1;
                 }
-            }*/
-            telemetry.addData("y heading", robot.imu.readCurrentHeading());
-//            telemetry.addData("left encoder" ,robot.frontLeftMotor.getCurrentPosition());
-            telemetry.update();
+            }
 
-            telemetry.addData("Status", "Running");
-            telemetry.update();
+                telemetry.addData("y heading", robot.imu.readCurrentHeading());
+//            telemetry.addData("left encoder" ,robot.frontLeftMotor.getCurrentPosition());
+                telemetry.update();
+
+                telemetry.addData("Status", "Running");
+                telemetry.update();
+            }
         }
     }
-}
+
 
