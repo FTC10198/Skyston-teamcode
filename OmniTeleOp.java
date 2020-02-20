@@ -141,8 +141,11 @@ public class OmniTeleOp extends LinearOpMode {
             robot.intakeLeft.setPower(gamepad2.right_trigger);
             robot.intakeRight.setPower(-gamepad2.right_trigger);
 
+            //tape measure
+            robot.tapeMeasure.setPower(gamepad2.left_stick_y);
+
             //linear lift
-            robot.linearLift.setPower(gamepad2.left_stick_y * .5);
+            robot.linearLift.setPower(gamepad2.right_stick_y);
 
             telemetry.addData("Intake System", String.format("%.2f", robot.intakeLeft.getPower()) + " " +
                     String.format("%.2f", robot.intakeRight.getPower()));
@@ -175,40 +178,41 @@ public class OmniTeleOp extends LinearOpMode {
                 robot.liftServo.setPosition(1);
                 telemetry.addData("Arm Servo Position", robot.liftServo.getPosition());
                 telemetry.update();
-            } else if (gamepad2.left_bumper) {
-                //arm close to robot
-                robot.liftServo.setPosition(0.05);
-                telemetry.addData("Arm Servo Position", robot.liftServo.getPosition());
-                telemetry.update();
-                robot.clampServo.setPosition(.5);
-                telemetry.addData("Clamp Position", robot.clampServo.getPosition());
-                telemetry.update();
-            } else if (gamepad2.b) {
-                //clamp is open
-                robot.clampServo.setPosition(.5);
-                telemetry.addData("Clamp Position", robot.clampServo.getPosition());
-                telemetry.update();
-            } else if (gamepad2.x) {
-                //clamp is closed
-                robot.clampServo.setPosition(.35);
-                telemetry.addData("Clamp Position", robot.clampServo.getPosition());
-                telemetry.update();
-            } else if (gamepad2.dpad_down) {
+            /*} else if (gamepad2.dpad_down) {
                 //controls the gate
-                robot.gateServo.setPower(.2);
+                robot.
+                gateServo.setPower(.2);
                 sleep(500);
                 robot.gateServo.setPower(0);
             } else if (gamepad2.dpad_up) {
                 //gate up
                 robot.gateServo.setPower(-.2);
                 sleep(500);
-                robot.gateServo.setPower(0);
+                robot.gateServo.setPower(0);*/
             } else if (gamepad1.x) {
                 if (slow == 1) {
                     slow = .6;
                 } else if (slow == .6) {
                     slow = 1;
-                }
+                }}/* else if (gamepad2.left_bumper) {
+                //arm close to robot
+                robot.liftServo.setPosition(0.05);
+                telemetry.addData("Arm Servo Position", robot.liftServo.getPosition());
+                telemetry.update();
+                robot.clampServo.setPosition(.5);
+                telemetry.addData("Clamp Position", robot.clampServo.getPosition());
+                telemetry.update();*/
+            /*} else if (gamepad2.b) {
+                //clamp is open
+                robot.clampServo.setPosition(.5);
+                telemetry.addData("Clamp Position", robot.clampServo.getPosition());
+                telemetry.update();*/
+            /*} else if (gamepad2.x) {
+                //clamp is closed
+                robot.clampServo.setPosition(.35);
+                telemetry.addData("Clamp Position", robot.clampServo.getPosition());
+                telemetry.update();*/
+
             }
 
                 telemetry.addData("y heading", robot.imu.readCurrentHeading());
@@ -219,6 +223,6 @@ public class OmniTeleOp extends LinearOpMode {
                 telemetry.update();
             }
         }
-    }
+
 
 

@@ -27,12 +27,13 @@ public class HardwareMapping
     public DcMotor  backRightMotor  = null;
     public DcMotor  intakeRight   = null;
     public DcMotor  intakeLeft  = null;
+    public DcMotor  tapeMeasure  = null;
     public DcMotor  linearLift  = null;
     public Servo    leftArmServo    = null;
     public Servo    rightArmServo    = null;
     public Servo    liftServo    = null;
-    public Servo    clampServo  = null;
-    public CRServo    gateServo  = null;
+    /*public Servo    clampServo  = null;*/
+    /*public CRServo    gateServo  = null;*/
     public VuforiaStuff vuforiaStuff;
     private VuforiaLocalizer vuforia;
     DigitalChannel touchSensor ;
@@ -63,6 +64,7 @@ public class HardwareMapping
         backRightMotor = hwMap.get(DcMotor.class, "backRightMotor");
         intakeRight  = hwMap.get(DcMotor.class, "intakeRight");
         intakeLeft = hwMap.get(DcMotor.class, "intakeLeft");
+        tapeMeasure = hwMap.get(DcMotor.class, "tapeMeasure");
         linearLift = hwMap.get(DcMotor.class, "linearLift");
        // leftmotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
        // rightmotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
@@ -74,6 +76,7 @@ public class HardwareMapping
         backRightMotor.setPower(0);
         intakeRight.setPower(0);
         intakeLeft.setPower(0);
+        tapeMeasure.setPower(0);
         linearLift.setPower(0);
 
         frontLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -83,8 +86,8 @@ public class HardwareMapping
         leftArmServo  = hwMap.get(Servo.class, "leftArmServo");
         rightArmServo  = hwMap.get(Servo.class, "rightArmServo");
         liftServo  = hwMap.get(Servo.class, "liftServo");
-        clampServo  = hwMap.get(Servo.class, "clampServo");
-        gateServo  = hwMap.get(CRServo.class, "gateServo");
+        /*clampServo  = hwMap.get(Servo.class, "clampServo");*/
+        /*gateServo  = hwMap.get(CRServo.class, "gateServo");*/
         touchSensor = hwMap.get(DigitalChannel.class, "touchSensor");
 
         // set the digital channel to input.
@@ -95,7 +98,7 @@ public class HardwareMapping
         leftArmServo.setPosition(0);
         rightArmServo.setPosition(0.5);
         liftServo.setPosition(0.05);
-        clampServo.setPosition(0.35);
+        /*clampServo.setPosition(0.35);*/
 
         //vuforia things
         int cameraMonitorViewId = hwMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hwMap.appContext.getPackageName());
